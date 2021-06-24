@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>第一章 Java虚拟机基础 · GitBook</title>
+        <title>线程、栈与栈桢 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01.html" />
+    <link rel="next" href="04.html" />
     
     
-    <link rel="prev" href="../xuyan.html" />
+    <link rel="prev" href="02.html" />
     
 
     </head>
@@ -115,7 +115,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="./">
             
                 <a href="./">
             
@@ -155,7 +155,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="03.html">
+        <li class="chapter active" data-level="1.3.3" data-path="03.html">
             
                 <a href="03.html">
             
@@ -1077,7 +1077,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第一章 Java虚拟机基础</a>
+        <a href=".." >线程、栈与栈桢</a>
     </h1>
 </div>
 
@@ -1092,9 +1092,61 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7B2C;&#x4E00;&#x7AE0;-&#x8BA4;&#x8BC6;java&#x865A;&#x62DF;&#x673A;&#x6808;">&#x7B2C;&#x4E00;&#x7AE0; &#x8BA4;&#x8BC6;Java&#x865A;&#x62DF;&#x673A;&#x6808;</h1>
+                                <h1 id="&#x7EBF;&#x7A0B;&#x3001;&#x6808;&#x4E0E;&#x6808;&#x6862;">&#x7EBF;&#x7A0B;&#x3001;&#x6808;&#x4E0E;&#x6808;&#x6862;</h1>
 <p><img src="../qrcode/javaskill_qrcode_01.png" alt="Java&#x827A;&#x672F;"></p>
-<p>&#x672C;&#x7AE0;&#x4ECB;&#x7ECD;&#x5B66;&#x4E60;JVM&#x5B57;&#x8282;&#x7801;&#x5FC5;&#x5907;&#x7684;Java&#x865A;&#x62DF;&#x673A;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x7406;&#x89E3;Java&#x7EBF;&#x7A0B;&#x3001;Java&#x865A;&#x62DF;&#x673A;&#x6808;&#x3001;&#x6808;&#x5E27;&#x3001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x662F;&#x7406;&#x89E3;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
+<p>&#x5728;Java&#x4E2D;&#xFF0C;Java&#x7EBF;&#x7A0B;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E00;&#x5BF9;&#x4E00;&#x7ED1;&#x5B9A;&#xFF0C;Java&#x865A;&#x62DF;&#x673A;&#x6808;&#x4E5F;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x6808;&#x6620;&#x5C04;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x5728;Java&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x65F6;&#x521B;&#x5EFA;&#x3002;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x4F7F;&#x7528;-Xss&#x53C2;&#x6570;&#x53EF;&#x914D;&#x7F6E;&#x865A;&#x62DF;&#x673A;&#x6808;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x6307;&#x5B9A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x6808;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<p> &#x6211;&#x4EEC;&#x4EE5;Java&#x547D;&#x4EE4;&#x542F;&#x52A8;&#x4E00;&#x4E2A;Java&#x7A0B;&#x5E8F;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x542F;&#x52A8;&#x4E00;&#x4E2A;JVM&#x8FDB;&#x7A0B;&#xFF0C;JVM&#x542F;&#x52A8;&#x540E;&#x4F1A;&#x52A0;&#x8F7D;&#x7C7B;&#x7684;&#x5B57;&#x8282;&#x7801;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x662F;&#x4EE5;&#x7EBF;&#x7A0B;&#x4E3A;&#x8C03;&#x5EA6;&#x5355;&#x4F4D;&#x7684;&#xFF0C;Java&#x7EBF;&#x7A0B;&#x53C8;&#x4E0E;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x4E00;&#x5BF9;&#x4E00;&#x7ED1;&#x5B9A;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x7684;Java&#x4EE3;&#x7801;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x5728;&#x7EBF;&#x7A0B;&#x4E0A;&#x6267;&#x884C;&#x3002;</p>
+<p> &#x7A0B;&#x5E8F;&#x4E2D;&#x7684;main&#x65B9;&#x6CD5;&#x662F;Java&#x7A0B;&#x5E8F;&#x7684;&#x5165;&#x53E3;&#xFF0C;JVM&#x4F1A;&#x4E3A;main&#x65B9;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x5206;&#x914D;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x53EB;main&#x7EBF;&#x7A0B;&#x3002;&#x867D;&#x7136;&#x6211;&#x4EEC;&#x770B;&#x4E0D;&#x5230;main&#x65B9;&#x6CD5;&#x88AB;&#x653E;&#x5728;Java&#x7EBF;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6253;&#x5370;main&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7EBF;&#x7A0B;&#x540D;&#xFF0C;&#x5982;&#x4EE3;&#x7801;&#x6E05;&#x5355;1-4&#x6240;&#x793A;&#x3002;</p>
+<center>&#x4EE3;&#x7801;&#x6E05;&#x5355;1-4 &#x6253;&#x5370;main&#x65B9;&#x6CD5;&#x6240;&#x5728;&#x7EBF;&#x7A0B;&#x540D;</center>
+
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>{  
+    <span class="hljs-comment">// &#x8F93;&#x51FA;&#xFF1A;main  </span>
+    System.out.println(Thread.currentThread().getName());  
+}
+</code></pre>
+<p>&#x5728;Java&#x4E2D;&#x521B;&#x5EFA;Thread&#x5BF9;&#x8C61;&#x5E76;&#x8C03;&#x7528;start&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;JVM&#x4F1A;&#x4E3A;&#x5176;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;Java&#x7EBF;&#x7A0B;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#xFF0C;&#x5C06;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x7ED1;&#x5B9A;&#x5230;Java&#x7EBF;&#x7A0B;&#x4E0A;&#x3002;HotSpot&#x865A;&#x62DF;&#x673A;&#x7EBF;&#x7A0B;start&#x6D41;&#x7A0B;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-c++"><span class="hljs-comment">// &#x7B2C;&#x4E00;&#x6B65;&#xFF1A;jvm.cpp&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;JVM_StartThread&#x65B9;&#x6CD5;  </span>
+native_thread = <span class="hljs-keyword">new</span> JavaThread(&amp;thread_entry, sz);  
+<span class="hljs-comment">// &#x7B2C;&#x4E8C;&#x6B65;&#xFF1A; thread.cpp&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;JavaThread&#x7684;&#x6784;&#x5EFA;&#x65B9;&#x6CD5;  </span>
+os::create_thread(<span class="hljs-keyword">this</span>, thr_type, stack_sz);  
+<span class="hljs-comment">// &#x7B2C;&#x4E09;&#x6B65;&#xFF1A;os_linux.cpp&#x6587;&#x5316;&#x4E2D;&#xFF0C;os::create_thread&#x65B9;&#x6CD5;  </span>
+OSThread* osthread = <span class="hljs-keyword">new</span> OSThread(<span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>);  
+thread-&gt;set_osthread(osthread);
+</code></pre>
+<p>&#x867D;&#x7136;Java&#x662F;&#x4E00;&#x95E8;&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x7684;&#x8BED;&#x8A00;&#xFF0C;&#x4F46;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x4F9D;&#x7136;&#x662F;&#x57FA;&#x4E8E;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x6808;&#x6862;&#xFF0C;&#x65B9;&#x6CD5;&#x7684;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x6808;&#x6862;&#x7684;&#x5165;&#x6808;&#x548C;&#x51FA;&#x6808;&#x3002;Java&#x7C7B;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x7ECF;&#x8FC7;&#x7F16;&#x8BD1;&#x5904;&#x7406;&#x540E;&#x6700;&#x7EC8;&#x53D8;&#x4E3A;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x5B58;&#x50A8;&#x5728;Code&#x5C5E;&#x6027;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#x9700;&#x6307;&#x5B9A;&#x8C03;&#x7528;&#x54EA;&#x4E2A;&#x7C7B;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x8C03;&#x7528;&#x7C7B;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x4E0E;&#x975E;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#x533A;&#x522B;&#x53EA;&#x5728;&#x4E8E;&#x8C03;&#x7528;&#x65B9;&#x6CD5;&#x65F6;&#x662F;&#x5426;&#x9700;&#x8981;&#x4F20;&#x9012;this&#x5F15;&#x7528;&#xFF0C;&#x8FD9;&#x4E0E;&#x8FC7;&#x7A0B;&#x8C03;&#x7528;&#x5E76;&#x65E0;&#x5DEE;&#x5F02;&#x3002;&#x6808;&#x4E0E;&#x6808;&#x6862;&#x7684;&#x5173;&#x7CFB;&#x5982;&#x56FE;1.7&#x6240;&#x793A;&#x3002; </p>
+<center>&#x56FE;1.7 &#x7EBF;&#x7A0B;&#x3001;&#x6808;&#x4E0E;&#x6808;&#x6862;&#x7684;&#x5173;&#x7CFB;</center>
+
+<p><img src="images/ch01_03_01.jpg" alt="&#x56FE;1.7 &#x7EBF;&#x7A0B;&#x3001;&#x6808;&#x4E0E;&#x6808;&#x6862;&#x7684;&#x5173;&#x7CFB;"> </p>
+<p> &#x5728;&#x8C03;&#x7528;Thread&#x5BF9;&#x8C61;&#x7684;start&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x8BE5;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;&#x865A;&#x62DF;&#x673A;&#x6808;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6808;&#x6862;&#x662F;run&#x65B9;&#x6CD5;&#x3002;run&#x65B9;&#x6CD5;&#x4E2D;&#x6BCF;&#x8C03;&#x7528;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x5C31;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x6808;&#x6862;&#x7684;&#x5165;&#x6808;&#xFF0C;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x53EA;&#x6709;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x624D;&#x4F1A;&#x51FA;&#x6808;&#x3002;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x5305;&#x62EC;&#x65B9;&#x6CD5;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x7ED3;&#x675F;&#x3001;return&#x547D;&#x4EE4;&#x8FD4;&#x56DE;&#x3002;</p>
+<p>&#x6808;&#x7684;&#x5927;&#x5C0F;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#xFF0C;&#x9ED8;&#x8BA4;&#x6808;&#x5927;&#x5C0F;&#x662F;1M&#xFF0C;&#x53EF;&#x901A;&#x8FC7;-Xss&#x53C2;&#x6570;&#x914D;&#x7F6E;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x4ECE;run&#x65B9;&#x6CD5;&#x5F00;&#x59CB;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x7528;&#x94FE;&#x8DEF;&#x8FC7;&#x6DF1;&#xFF0C;&#x5982;&#x9012;&#x5F52;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x6808;&#x6CA1;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x7A7A;&#x95F4;&#x5BB9;&#x7EB3;&#x4E0B;&#x4E00;&#x4E2A;&#x6808;&#x6862;&#x7684;&#x5165;&#x6808;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x51FA;&#x73B0;StackOverflowError&#x9519;&#x8BEF;&#xFF0C;&#x540C;&#x65F6;&#x5F53;&#x524D;&#x6808;&#x88AB;&#x9500;&#x6BC1;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7ED3;&#x675F;&#x3002;HotSpot&#x865A;&#x62DF;&#x673A;&#x7684;&#x5B9E;&#x73B0;&#x6E90;&#x7801;<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#x5982;&#x4EE3;&#x7801;&#x6E05;&#x5355;1-6&#x6240;&#x793A;&#x3002;</p>
+<center>&#x4EE3;&#x7801;&#x6E05;&#x5355;1-6 HotSpot&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x6E90;&#x7801;</center>
+
+<pre><code class="lang-c++"><span class="hljs-keyword">void</span> JavaCalls::call(JavaValue* result, methodHandle method, JavaCallArguments* args, TRAPS) {  
+  os::os_exception_wrapper(call_helper, result, &amp;method, args, THREAD);  
+}  
+
+<span class="hljs-keyword">void</span> JavaCalls::call_helper(JavaValue* result, methodHandle* m, JavaCallArguments* args, TRAPS) {  
+  methodHandle method = *m;  
+  JavaThread* thread = (JavaThread*)THREAD;  
+  .......  
+   <span class="hljs-comment">// &#x5224;&#x65AD;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x8C03;&#x7528;&#x6808;&#x662F;&#x5426;&#x6709;&#x8DB3;&#x591F;&#x7684;&#x5185;&#x5B58;  </span>
+  <span class="hljs-keyword">if</span> (!os::stack_shadow_pages_available(THREAD, method)) {  
+     <span class="hljs-comment">// &#x5185;&#x5B58;&#x4E0D;&#x8DB3;&#xFF0C;&#x629B;&#x51FA;stack_overflow&#x5F02;&#x5E38;  </span>
+    Exceptions::throw_stack_overflow_exception(THREAD, __FILE__, __LINE__, method);  
+    <span class="hljs-keyword">return</span>;  
+  } <span class="hljs-keyword">else</span> {  
+    <span class="hljs-comment">// &#x5360;&#x7528;&#x8DB3;&#x591F;&#x7684;&#x5185;&#x5B58;  </span>
+    os::bang_stack_shadow_pages();  
+  }  
+  ......  
+}
+</code></pre>
+<hr>
+<blockquote id="fn_1">
+<sup>1</sup>. &#x6E90;&#x7801;&#x5728;hotspot/src/share/vm/runtime/javaCalls.cpp&#x6587;&#x4EF6;&#x4E2D;<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<p><font color="#666666">&#x53D1;&#x5E03;&#x4E8E;&#xFF1A;2021 &#x5E74; 06 &#x6708; 23 &#x65E5;</font><br><font color="#666666">&#x4F5C;&#x8005;: &#x5434;&#x5C31;&#x4E1A;</font><br><font color="#666666">&#x94FE;&#x63A5;: <a href="https://wujiuye.gitbook.io/jvmbytecode" target="_blank">https://wujiuye.gitbook.io/jvmbytecode</a></font><br><font color="#666666">&#x6765;&#x6E90;: GitBook&#x5F00;&#x6E90;&#x7535;&#x5B50;&#x4E66;&#x300A;&#x6DF1;&#x5165;&#x6D45;&#x51FA;JVM&#x5B57;&#x8282;&#x7801;&#x300B;&#xFF08;&#x300A;Java&#x865A;&#x62DF;&#x673A;&#x5B57;&#x8282;&#x7801;&#x4ECE;&#x5165;&#x95E8;&#x5230;&#x5B9E;&#x6218;&#x300B;&#x7684;&#x7B2C;&#x4E8C;&#x7248;&#xFF09;&#xFF0C;&#x672A;&#x7ECF;&#x4F5C;&#x8005;&#x8BB8;&#x53EF;&#xFF0C;&#x7981;&#x6B62;&#x8F6C;&#x8F7D;!</font><br></p>
+<p><img src="../qrcode/javaskill_qrcode_02.png" alt="Java&#x827A;&#x672F;"></p>
 
                                 
                                 </section>
@@ -1122,12 +1174,12 @@
 
             
                 
-                <a href="../xuyan.html" class="navigation navigation-prev " aria-label="Previous page: 序言">
+                <a href="02.html" class="navigation navigation-prev " aria-label="Previous page: JVM运行时内存结构">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="01.html" class="navigation navigation-next " aria-label="Next page: 为什么会出现StackOverflowError">
+                <a href="04.html" class="navigation navigation-next " aria-label="Next page: 局部变量表与操作数栈">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1138,7 +1190,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第一章 Java虚拟机基础","level":"1.3","depth":1,"next":{"title":"为什么会出现StackOverflowError","level":"1.3.1","depth":2,"path":"chapter01/01.md","ref":"chapter01/01.md","articles":[]},"previous":{"title":"序言","level":"1.2","depth":1,"path":"xuyan.md","ref":"xuyan.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter01/README.md","mtime":"2021-06-24T15:10:05.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-24T17:10:55.923Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"线程、栈与栈桢","level":"1.3.3","depth":2,"next":{"title":"局部变量表与操作数栈","level":"1.3.4","depth":2,"path":"chapter01/04.md","ref":"chapter01/04.md","articles":[]},"previous":{"title":"JVM运行时内存结构","level":"1.3.2","depth":2,"path":"chapter01/02.md","ref":"chapter01/02.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter01/03.md","mtime":"2021-06-24T17:07:55.079Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-24T17:10:55.923Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

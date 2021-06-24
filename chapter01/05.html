@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>第一章 Java虚拟机基础 · GitBook</title>
+        <title>基于栈的指令集架构 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="01.html" />
+    <link rel="next" href="06.html" />
     
     
-    <link rel="prev" href="../xuyan.html" />
+    <link rel="prev" href="04.html" />
     
 
     </head>
@@ -115,7 +115,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3" data-path="./">
+        <li class="chapter " data-level="1.3" data-path="./">
             
                 <a href="./">
             
@@ -181,7 +181,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.5" data-path="05.html">
+        <li class="chapter active" data-level="1.3.5" data-path="05.html">
             
                 <a href="05.html">
             
@@ -1077,7 +1077,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第一章 Java虚拟机基础</a>
+        <a href=".." >基于栈的指令集架构</a>
     </h1>
 </div>
 
@@ -1092,9 +1092,79 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7B2C;&#x4E00;&#x7AE0;-&#x8BA4;&#x8BC6;java&#x865A;&#x62DF;&#x673A;&#x6808;">&#x7B2C;&#x4E00;&#x7AE0; &#x8BA4;&#x8BC6;Java&#x865A;&#x62DF;&#x673A;&#x6808;</h1>
+                                <h1 id="&#x57FA;&#x4E8E;&#x6808;&#x7684;&#x6307;&#x4EE4;&#x96C6;&#x67B6;&#x6784;">&#x57FA;&#x4E8E;&#x6808;&#x7684;&#x6307;&#x4EE4;&#x96C6;&#x67B6;&#x6784;</h1>
 <p><img src="../qrcode/javaskill_qrcode_01.png" alt="Java&#x827A;&#x672F;"></p>
-<p>&#x672C;&#x7AE0;&#x4ECB;&#x7ECD;&#x5B66;&#x4E60;JVM&#x5B57;&#x8282;&#x7801;&#x5FC5;&#x5907;&#x7684;Java&#x865A;&#x62DF;&#x673A;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x7406;&#x89E3;Java&#x7EBF;&#x7A0B;&#x3001;Java&#x865A;&#x62DF;&#x673A;&#x6808;&#x3001;&#x6808;&#x5E27;&#x3001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x662F;&#x7406;&#x89E3;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
+<p>&#x5728;&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x9664;&#x76F4;&#x63A5;&#x5185;&#x5B58;&#x64CD;&#x4F5C;&#x7684;&#x6307;&#x4EE4;&#x5916;&#xFF0C;&#x5176;&#x5B83;&#x6307;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x90FD;&#x4F9D;&#x8D56;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5982;&#x8DF3;&#x8F6C;&#x6307;&#x4EE4;&#x3001;&#x5FAA;&#x73AF;&#x6307;&#x4EE4;&#x3001;&#x52A0;&#x51CF;&#x6CD5;&#x6307;&#x4EE4;&#x7B49;&#x3002;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x96C6;&#x662F;&#x7531;&#x786C;&#x4EF6;&#x76F4;&#x63A5;&#x652F;&#x6301;&#x7684;&#xFF0C;&#x4E0D;&#x540C;&#x67B6;&#x6784;&#x7684;CPU&#x63D0;&#x4F9B;&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x96C6;&#x4E5F;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#x3002;</p>
+<p> &#x4EE5;&#x4E00;&#x4E2A;&#x7ECF;&#x5178;&#x7684;++i&#x9762;&#x8BD5;&#x9898;&#x4E3A;&#x4F8B;&#xFF0C;&#x4F7F;&#x7528;c&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-c++"><span class="hljs-keyword">int</span> m = ++i;
+</code></pre>
+<p>&#x53CD;&#x6C47;&#x7F16;&#x540E;&#x5BF9;&#x5E94;&#x7684;32&#x4F4D;x86 CPU&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-assembly">inc dword ptr [ebp-44h]  
+mov eax,dword prt [ebp-44h]  
+mov dword ptr [ebp-4ch],eax
+</code></pre>
+<p>&#x8FD9;&#x4E09;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x610F;&#x601D;&#x662F;&#xFF0C;&#x5148;&#x5C06;[ebp-44h]&#x5185;&#x5B58;&#x5757;&#x5B58;&#x50A8;&#x7684;&#x503C;&#x52A0;1&#xFF0C;&#x800C;dword ptr&#x76F8;&#x5F53;&#x4E8E;c&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x7C7B;&#x578B;&#x58F0;&#x660E;&#x3002;&#x63A5;&#x7740;&#x5C06;[ebp-44h]&#x5185;&#x5B58;&#x5757;&#x5B58;&#x50A8;&#x7684;&#x503C;&#x653E;&#x5165;&#x5230;eax&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x6700;&#x540E;&#x5C06;eax&#x5BC4;&#x5B58;&#x5668;&#x5B58;&#x50A8;&#x7684;&#x503C;&#x653E;&#x5230;[ebp-4ch]&#x5185;&#x5B58;&#x5757;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;m&#x3002;&#x7531;&#x4E8E;i&#x548C;m&#x662F;&#x5728;&#x6808;&#x4E0A;&#x5206;&#x914D;&#x7684;&#x5185;&#x5B58;&#xFF0C;&#x56E0;&#x6B64;[ebp-44h]&#x5BF9;&#x5E94;i&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF0C;[ebp-4ch]&#x5BF9;&#x5E94;m&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x5C06;&#x4E00;&#x5757;&#x5185;&#x5B58;&#x7684;&#x503C;&#x8D4B;&#x503C;&#x7ED9;&#x53E6;&#x4E00;&#x5757;&#x5185;&#x5B58;&#xFF0C;&#x5FC5;&#x987B;&#x8981;&#x901A;&#x8FC7;&#x5BC4;&#x5B58;&#x5668;&#x3002;32&#x4F4D;x86 CPU&#x5305;&#x62EC;8&#x4E2A;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;EAX&#x3001;EBX&#x3001;ECX&#x3001;EDX&#x3001;ESP&#x3001;EBP&#x3001;ESI&#x3001;EDI&#xFF0C;&#x5176;&#x4E2D;EBP&#x3001;ESP&#x7528;&#x505A;&#x6307;&#x9488;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x5B58;&#x653E;&#x5806;&#x6808;&#x5185;&#x5B58;&#x50A8;&#x5355;&#x5143;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x3002;&#x8FD9;&#x4E9B;&#x770B;&#x4E0D;&#x61C2;&#x6CA1;&#x5173;&#x7CFB;&#xFF0C;&#x8FD9;&#x4E5F;&#x4E0D;&#x662F;&#x672C;&#x4E66;&#x7684;&#x91CD;&#x70B9;&#x3002;</p>
+<p>&#x4E0A;&#x8FF0;++i&#x7684;&#x4F8B;&#x5B50;&#x4F7F;&#x7528;java&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>{  
+    <span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>;  
+    <span class="hljs-keyword">int</span> result = ++a;  
+    System.out.println(result);  
+}
+</code></pre>
+<p>&#x4F7F;&#x7528;javap&#x547D;&#x4EE4;&#x8F93;&#x51FA;&#x8FD9;&#x6BB5;&#x4EE3;&#x7801;&#x7684;&#x5B57;&#x8282;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-assembly">public static void main(java.lang.String[]);  
+    Code:  
+       0: bipush        10  
+       2: istore_1  
+       3: iinc          1, 1  
+       6: iload_1  
+       7: istore_2  
+       8: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;  
+     11: iload_2  
+     12: invokevirtual #3                  // Method java/io/PrintStream.println:(I)V  
+     15: return
+</code></pre>
+<p>&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x524D;&#x9762;&#x7684;&#x7F16;&#x53F7;&#x6211;&#x4EEC;&#x6682;&#x65F6;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x884C;&#x53F7;&#x3002;&#x5728;&#x672C;&#x4F8B;&#x4E2D;&#xFF0C;&#x884C;&#x53F7;0&#x5230;7&#x7684;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x5B8C;&#x6210;&#x7684;&#x5DE5;&#x4F5C;&#x662F;&#x5C06;&#x53D8;&#x91CF;a&#x81EA;&#x589E;&#x540E;&#x7684;&#x503C;&#x8D4B;&#x503C;&#x7ED9;result&#x53D8;&#x91CF;&#x3002;&#x4E0B;&#x9762;&#x5C06;&#x8BE6;&#x7EC6;&#x5206;&#x6790;&#x8FD9;&#x51E0;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002; </p>
+<ol>
+<li>bipush&#x6307;&#x4EE4;&#x662F;&#x5C06;&#x7ACB;&#x5373;&#x6570;10&#x653E;&#x5165;&#x5230;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x9876;&#xFF0C;&#x8BE5;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x7684;&#x53D8;&#x5316;&#x5982;&#x56FE;1.10&#x6240;&#x793A;&#x3002;</li>
+</ol>
+<center>&#x56FE;1.10 bipush&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;</center>
+
+<p><img src="images/ch01_05_01.jpg" alt="&#x56FE;1.10 bipush&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;">  </p>
+<ol>
+<li>istore_1&#x6307;&#x4EE4;&#x662F;&#x5C06;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x9876;&#x7684;&#x5143;&#x7D20;&#x4ECE;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x9876;&#x5F39;&#x51FA;&#xFF0C;&#x5E76;&#x5B58;&#x653E;&#x5230;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x4E2D;&#x7D22;&#x5F15;&#x4E3A;1&#x7684;Slot&#xFF0C;&#x5373;&#x8D4B;&#x503C;&#x7ED9;&#x53D8;&#x91CF;a&#x3002;&#x8BE5;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x7684;&#x53D8;&#x5316;&#x5982;&#x56FE;1.11&#x6240;&#x793A;&#x3002;</li>
+</ol>
+<center>&#x56FE;1.11 istore&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;</center>
+
+<p><img src="images/ch01_05_02.jpg" alt="&#x56FE;1.11 istore&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;">  </p>
+<ol>
+<li>iinc&#x8FD9;&#x6761;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x6BD4;&#x8F83;&#x7279;&#x522B;&#xFF0C;&#x5B83;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x64CD;&#x4F5C;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x800C;&#x4E0D;&#x9700;&#x8981;&#x7ECF;&#x8FC7;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x3002;&#x8BE5;&#x6307;&#x4EE4;&#x662F;&#x5C06;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x4E2D;&#x7D22;&#x5F15;&#x4E3A;1&#x7684;Slot&#x6240;&#x5B58;&#x50A8;&#x7684;&#x6574;&#x6570;&#x503C;&#x81EA;&#x589E;1&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5C06;&#x5C40;&#x90E8;&#x53D8;&#x91CF;a&#x81EA;&#x589E;1&#xFF0C;&#x5982;&#x56FE;1.12&#x6240;&#x793A;&#x3002;</li>
+</ol>
+<center>&#x56FE;1.12 iinc&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;</center>
+
+<p><img src="images/ch01_05_03.jpg" alt="&#x56FE;1.12 iinc&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;">  </p>
+<ol>
+<li><p>iload_1&#x6307;&#x4EE4;&#x662F;&#x5C06;&#x81EA;&#x589E;&#x540E;&#x7684;&#x53D8;&#x91CF;a&#x653E;&#x5165;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x7684;&#x6808;&#x9876;&#xFF0C;&#x8BE5;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x7684;&#x53D8;&#x5316;&#x5982;&#x56FE;1.13&#x6240;&#x793A;&#x3002;</p>
+<center>&#x56FE;1.13 iload_1&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;</center>
+
+</li>
+</ol>
+<p><img src="images/ch01_05_04.jpg" alt="&#x56FE;1.13 iload_1&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;"> </p>
+<ol>
+<li>&#x6700;&#x540E;&#xFF0C;istore_2&#x6307;&#x4EE4;&#x662F;&#x5C06;&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x9876;&#x7684;&#x5143;&#x7D20;&#x4ECE;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x4E2D;&#x5F39;&#x51FA;&#xFF0C;&#x5E76;&#x5B58;&#x653E;&#x5230;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x4E2D;&#x7D22;&#x5F15;&#x4E3A;2&#x7684;Slot&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7ED9;result&#x53D8;&#x91CF;&#x8D4B;&#x503C;&#xFF0C;&#x5982;&#x56FE;1.14&#x6240;&#x793A;&#x3002;</li>
+</ol>
+<center>&#x56FE;1.14 istore_2&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;</center>
+
+<p><img src="images/ch01_05_05.jpg" alt="&#x56FE;1.14 istore_2&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;"> </p>
+<p> &#x4ECE;++i&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x5B57;&#x8282;&#x7801;&#x662F;&#x4F9D;&#x8D56;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x5DE5;&#x4F5C;&#x7684;&#x3002;&#x5728;&#x865A;&#x62DF;&#x673A;&#x4E0A;&#x6267;&#x884C;&#x7684;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x867D;&#x7136;&#x6700;&#x7EC8;&#x4E5F;&#x662F;&#x7F16;&#x8BD1;&#x4E3A;&#x673A;&#x5668;&#x7801;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x7F16;&#x5199;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x65F6;&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x6211;&#x4EEC;&#x8003;&#x8651;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x54EA;&#x4E9B;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x4EA4;&#x7531;JVM&#x53BB;&#x5B9E;&#x73B0;&#x3002;</p>
+<p> &#x4F7F;&#x7528;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8003;&#x8651;CPU&#x7684;&#x67B6;&#x6784;&#xFF0C;&#x6709;&#x591A;&#x5C11;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x53EF;&#x9009;&#xFF0C;&#x4E86;&#x89E3;&#x786C;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x6BCF;&#x6761;&#x6307;&#x4EE4;&#x64CD;&#x4F5C;&#x591A;&#x5C11;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x5728;&#x4F7F;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x4E4B;&#x524D;&#x9700;&#x8981;&#x8003;&#x8651;&#x662F;&#x5426;&#x9700;&#x8981;&#x5907;&#x4EFD;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E;&#x662F;&#x5426;&#x9700;&#x8981;&#x6062;&#x590D;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#x3002;&#x800C;&#x4F7F;&#x7528;&#x4F9D;&#x8D56;&#x6808;&#x5DE5;&#x4F5C;&#x7684;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7F16;&#x5199;&#x4EE3;&#x7801;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x5173;&#x5FC3;&#x6BCF;&#x6761;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x9700;&#x8981;&#x591A;&#x5C11;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x6309;&#x987A;&#x5E8F;&#x5C06;&#x53C2;&#x6570;push&#x5230;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x9876;&#x3002;&#x5982;&#x679C;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x5728;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x5B8C;&#x6210;&#x540E;&#xFF0C;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x9876;&#x5B58;&#x50A8;&#x7684;&#x5C31;&#x662F;&#x8FD4;&#x56DE;&#x503C;&#x3002;</p>
+<hr>
+<blockquote id="fn_1">
+<sup>1</sup>. cpu&#x67B6;&#x6784;&#x662F;cpu&#x5382;&#x5546;&#x7ED9;&#x5C5E;&#x4E8E;&#x540C;&#x4E00;&#x7CFB;&#x5217;&#x7684;cpu&#x4EA7;&#x54C1;&#x5B9A;&#x7684;&#x4E00;&#x4E2A;&#x89C4;&#x8303;&#x3002;<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<p><font color="#666666">&#x53D1;&#x5E03;&#x4E8E;&#xFF1A;2021 &#x5E74; 06 &#x6708; 23 &#x65E5;</font><br><font color="#666666">&#x4F5C;&#x8005;: &#x5434;&#x5C31;&#x4E1A;</font><br><font color="#666666">&#x94FE;&#x63A5;: <a href="https://wujiuye.gitbook.io/jvmbytecode" target="_blank">https://wujiuye.gitbook.io/jvmbytecode</a></font><br><font color="#666666">&#x6765;&#x6E90;: GitBook&#x5F00;&#x6E90;&#x7535;&#x5B50;&#x4E66;&#x300A;&#x6DF1;&#x5165;&#x6D45;&#x51FA;JVM&#x5B57;&#x8282;&#x7801;&#x300B;&#xFF08;&#x300A;Java&#x865A;&#x62DF;&#x673A;&#x5B57;&#x8282;&#x7801;&#x4ECE;&#x5165;&#x95E8;&#x5230;&#x5B9E;&#x6218;&#x300B;&#x7684;&#x7B2C;&#x4E8C;&#x7248;&#xFF09;&#xFF0C;&#x672A;&#x7ECF;&#x4F5C;&#x8005;&#x8BB8;&#x53EF;&#xFF0C;&#x7981;&#x6B62;&#x8F6C;&#x8F7D;!</font><br></p>
+<p><img src="../qrcode/javaskill_qrcode_02.png" alt="Java&#x827A;&#x672F;"></p>
 
                                 
                                 </section>
@@ -1122,12 +1192,12 @@
 
             
                 
-                <a href="../xuyan.html" class="navigation navigation-prev " aria-label="Previous page: 序言">
+                <a href="04.html" class="navigation navigation-prev " aria-label="Previous page: 局部变量表与操作数栈">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="01.html" class="navigation navigation-next " aria-label="Next page: 为什么会出现StackOverflowError">
+                <a href="06.html" class="navigation navigation-next " aria-label="Next page: 本章小结">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1138,7 +1208,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第一章 Java虚拟机基础","level":"1.3","depth":1,"next":{"title":"为什么会出现StackOverflowError","level":"1.3.1","depth":2,"path":"chapter01/01.md","ref":"chapter01/01.md","articles":[]},"previous":{"title":"序言","level":"1.2","depth":1,"path":"xuyan.md","ref":"xuyan.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter01/README.md","mtime":"2021-06-24T15:10:05.912Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-24T17:10:55.923Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"基于栈的指令集架构","level":"1.3.5","depth":2,"next":{"title":"本章小结","level":"1.3.6","depth":2,"path":"chapter01/06.md","ref":"chapter01/06.md","articles":[]},"previous":{"title":"局部变量表与操作数栈","level":"1.3.4","depth":2,"path":"chapter01/04.md","ref":"chapter01/04.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter01/05.md","mtime":"2021-06-24T17:08:14.900Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-24T17:10:55.923Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
