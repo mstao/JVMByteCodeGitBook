@@ -1,0 +1,1513 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>实现类Spring框架@Async注解功能的asyncframework · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="vine.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    《深入浅出JVM字节码》
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../xuyan.html">
+            
+                <a href="../xuyan.html">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter01/">
+            
+                <a href="../chapter01/">
+            
+                    
+                    第一章 Java虚拟机基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter01/01.html">
+            
+                <a href="../chapter01/01.html">
+            
+                    
+                    为什么会出现StackOverflowError
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter01/02.html">
+            
+                <a href="../chapter01/02.html">
+            
+                    
+                    JVM运行时内存结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter01/03.html">
+            
+                <a href="../chapter01/03.html">
+            
+                    
+                    线程、栈与栈桢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter01/04.html">
+            
+                <a href="../chapter01/04.html">
+            
+                    
+                    局部变量表与操作数栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../chapter01/05.html">
+            
+                <a href="../chapter01/05.html">
+            
+                    
+                    基于栈的指令集架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../chapter01/06.html">
+            
+                <a href="../chapter01/06.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    第二章 深入理解Class文件结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    项目框架搭建
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    解析魔数
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    解析版本号
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" >
+            
+                <span>
+            
+                    
+                    解析常量池
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" >
+            
+                <span>
+            
+                    
+                    解析class文件的访问标志
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" >
+            
+                <span>
+            
+                    
+                    解析this与super
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" >
+            
+                <span>
+            
+                    
+                    解析实现的接口
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" >
+            
+                <span>
+            
+                    
+                    解析字段表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" >
+            
+                <span>
+            
+                    
+                    解析方法表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" >
+            
+                <span>
+            
+                    
+                    解析class文件的属性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" >
+            
+                <span>
+            
+                    
+                    解析整个Class文件结构
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" >
+            
+                <span>
+            
+                    
+                    属性二次解析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    第三章 字节码指令集
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    从Hello Word出发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    字段与方法描述符
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    读写局部变量表与操作数栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    基于对象的操作
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" >
+            
+                <span>
+            
+                    
+                    访问静态字段与静态方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" >
+            
+                <span>
+            
+                    
+                    调用方法的四条指令
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" >
+            
+                <span>
+            
+                    
+                    不同类型返回值对应的指令
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" >
+            
+                <span>
+            
+                    
+                    创建数组与访问数组元素
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" >
+            
+                <span>
+            
+                    
+                    条件分支语句的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" >
+            
+                <span>
+            
+                    
+                    循环语句的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" >
+            
+                <span>
+            
+                    
+                    异常处理的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    第四章 深入理解类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" >
+            
+                <span>
+            
+                    
+                    动态加载类的两种方式
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" >
+            
+                <span>
+            
+                    
+                    类加载过程
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" >
+            
+                <span>
+            
+                    
+                    双亲委派模型
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" >
+            
+                <span>
+            
+                    
+                    自定义类加载器加载字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    第五章 ASM快速上手
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    框架简介
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    访问者模式在ASM框架中的应用
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    在项目中使用ASM
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" >
+            
+                <span>
+            
+                    
+                    创建类并创建方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" >
+            
+                <span>
+            
+                    
+                    给类添加字段
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" >
+            
+                <span>
+            
+                    
+                    改写类并改写方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" >
+            
+                <span>
+            
+                    
+                    创建类并实现接口
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" >
+            
+                <span>
+            
+                    
+                    继承类并重写父类方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    第六章 实战一：JDK与Cglib动态代理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" >
+            
+                <span>
+            
+                    
+                    JDK动态代理实现原理分析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" >
+            
+                <span>
+            
+                    
+                    动手实现JDK动态代理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    Cglib动态代理实现原理分析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" >
+            
+                <span>
+            
+                    
+                    动手实现Cglib动态代理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    第七章 实战二：APM数据采集之探针埋点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    Instrumentation简介
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    编写Java Agent插件
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" >
+            
+                <span>
+            
+                    
+                    在类加载之前修改类的字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" >
+            
+                <span>
+            
+                    
+                    使用ASM为方法插入埋点
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" >
+            
+                <span>
+            
+                    
+                    在类加载之后修改类的字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    第八章 进阶篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    深入理解类型检查与栈映射桢
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    深入理解泛型与泛型方法调用
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    字节码实战开源项目
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.11.1" data-path="asyncframework.html">
+            
+                <a href="asyncframework.html">
+            
+                    
+                    实现类Spring框架@Async注解功能的asyncframework
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="vine.html">
+            
+                <a href="vine.html">
+            
+                    
+                    一款轻量级的分布式调用链路追踪Java探针vine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="jcg.html">
+            
+                <a href="jcg.html">
+            
+                    
+                    运行时解析json生成class的json-class-generator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="beemite.html">
+            
+                <a href="beemite.html">
+            
+                    
+                    JavaAgent入门级项目Beemite
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >实现类Spring框架@Async注解功能的asyncframework</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5B9E;&#x73B0;&#x7C7B;spring&#x6846;&#x67B6;async&#x6CE8;&#x89E3;&#x529F;&#x80FD;&#x7684;asyncframework">&#x5B9E;&#x73B0;&#x7C7B;Spring&#x6846;&#x67B6;@Async&#x6CE8;&#x89E3;&#x529F;&#x80FD;&#x7684;asyncframework</h1>
+<p><img src="../qrcode/javaskill_qrcode_01.png" alt="Java&#x827A;&#x672F;"></p>
+<p>asyncframework&#x662F;&#x7B14;&#x8005;&#x4E8E;2019&#x5E74;&#x5B9E;&#x73B0;&#x7684;&#x4E00;&#x4E2A;&#x7C7B;Spring&#x6846;&#x67B6;@Async&#x6CE8;&#x89E3;&#x529F;&#x80FD;&#x7684;&#x5F02;&#x6B65;&#x6846;&#x67B6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x5728;&#x63A5;&#x53E3;&#x4E0A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;<code>@AsyncFunction</code>&#x6CE8;&#x89E3;&#x5C31;&#x53EF;&#x8BA9;&#x8FD9;&#x4E2A;&#x65B9;&#x6CD5;&#x5F02;&#x6B65;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x5DF2;&#x53D1;&#x5E03;&#x5728;&#x7B14;&#x8005;&#x7684;<a href="https://github.com/wujiuye/asyncframework" target="_blank">Github</a>&#x4E0A;&#x3002;</p>
+<p>asyncframework&#x6846;&#x67B6;&#x7684;<code>@AsyncFunction</code>&#x6CE8;&#x89E3;&#x4E0D;&#x4EC5;&#x652F;&#x6301;&#x7528;&#x5728;&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x65B9;&#x6CD5;&#x4E0A;&#xFF0C;&#x4E0E;Spring&#x6846;&#x67B6;&#x4E00;&#x6837;&#xFF0C;&#x5B83;&#x540C;&#x6837;&#x652F;&#x6301;<code>@AsyncFunction</code>&#x6CE8;&#x89E3;&#x7528;&#x5728;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x65B9;&#x6CD5;&#x4E0A;&#x3002;</p>
+<p>&#x4F46;&#x4E0E;Spring&#x6846;&#x67B6;&#x5B9E;&#x73B0;&#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;asyncframework&#x6846;&#x67B6;&#x662F;&#x5B8C;&#x5168;&#x57FA;&#x4E8E;&#x52A8;&#x6001;&#x5B57;&#x8282;&#x7801;&#x6280;&#x672F;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x652F;&#x6301;&#x5728;&#x975E;<code>spring</code>&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x6211;&#x5F53;&#x521D;&#x5199;&#x5B83;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x4E5F;&#x5BF9;&#x5B57;&#x8282;&#x7801;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x6211;&#x975E;&#x5E38;&#x63A8;&#x8350;&#x4F60;&#x9605;&#x8BFB;&#x8FD9;&#x4E2A;&#x6846;&#x67B6;&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x6D53;&#x7F29;&#x7684;&#x90FD;&#x662F;&#x7CBE;&#x534E;&#xFF0C;&#x5341;&#x51E0;&#x4E2A;&#x7C7B;&#x5305;&#x542B;&#x4E86;&#x8BBE;&#x8BA1;&#x6A21;&#x5F0F;&#x7684;&#x4F7F;&#x7528;&#x3001;&#x5B57;&#x8282;&#x7801;&#x3001;&#x4EE5;&#x53CA;&#x6846;&#x67B6;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x60F3;&#xFF0C;&#x5BF9;&#x4F60;&#x7406;&#x89E3;<code>spring</code>&#x7684;<code>@Async</code>&#x6CE8;&#x89E3;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x4E5F;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x5141;&#x8BB8;&#x7B14;&#x8005;&#x5411;&#x60A8;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x4F7F;&#x7528;asyncframework&#xFF0C;&#x518D;&#x4ECB;&#x7ECD;asyncframework&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x3002;</p>
+<h2 id="&#x5982;&#x4F55;&#x4F7F;&#x7528;asyncframework">&#x5982;&#x4F55;&#x4F7F;&#x7528;asyncframework</h2>
+<p>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5728;Java&#x9879;&#x76EE;&#x4E2D;&#x6DFB;&#x52A0;&#x4F9D;&#x8D56;</p>
+<pre><code>&lt;dependency&gt;
+  &lt;groupId&gt;com.github.wujiuye&lt;/groupId&gt;
+  &lt;artifactId&gt;asyncframework&lt;/artifactId&gt;
+  &lt;version&gt;1.2.0-RELEASE&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><p>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x5B9A;&#x4E49;&#x63A5;&#x53E3;&#x4EE5;&#x53CA;&#x7F16;&#x5199;&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> wujiuye
+ * <span class="hljs-doctag">@version</span> 1.0 on 2019/11/24
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">AsyncMessageSubscribe</span> </span>{
+    <span class="hljs-comment">/**
+     * &#x5F02;&#x6B65;&#x65E0;&#x8FD4;&#x56DE;&#x503C;
+     *
+     * <span class="hljs-doctag">@param</span> queue
+     */</span>
+    <span class="hljs-meta">@AsyncFunction</span>
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pullMessage</span><span class="hljs-params">(String queue)</span></span>;
+    <span class="hljs-comment">/**
+     * &#x5F02;&#x6B65;&#x5E26;&#x8FD4;&#x56DE;&#x503C;
+     *
+     * <span class="hljs-doctag">@param</span> s1
+     * <span class="hljs-doctag">@param</span> s2
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-meta">@AsyncFunction</span>
+    <span class="hljs-function">AsyncResult&lt;String&gt; <span class="hljs-title">doAction</span><span class="hljs-params">(String s1, String s2)</span></span>;
+}
+</code></pre>
+<p>&#x7F16;&#x5199;&#x5B9E;&#x73B0;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncMessageSubscribe</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AsyncMessageSubscribe</span> </span>{
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">pullMessage</span><span class="hljs-params">(String queue)</span> </span>{
+        System.out.println(queue + <span class="hljs-string">&quot;&#xFF0C; current thread name:&quot;</span> + Thread.currentThread().getName());
+    }
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> AsyncResult&lt;String&gt; <span class="hljs-title">doAction</span><span class="hljs-params">(String s1, String s2)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> AsyncResult&lt;&gt;(<span class="hljs-string">&quot;hello wujiuye! current thread name:&quot;</span> + Thread.currentThread().getName());
+    }
+}
+</code></pre>
+<p>&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x914D;&#x7F6E;&#x5168;&#x5C40;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;<code>AsyncProxyFactory</code>&#x521B;&#x5EFA;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;</p>
+<p>&#x5728;&#x8C03;&#x7528;<code>AsyncProxyFactory</code>&#x7684;<code>getInterfaceImplSupporAsync</code>&#x65B9;&#x6CD5;&#x521B;&#x5EFA;&#x4EE3;&#x7406;&#x7C7B;&#x5B9E;&#x4F8B;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x6307;&#x5B9A;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x4F7F;&#x7528;&#x54EA;&#x4E2A;&#x7EBF;&#x7A0B;&#x6C60;&#xFF0C;&#x4EE5;&#x53CA;&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsmProxyTest</span> </span>{
+   <span class="hljs-comment">// &#x914D;&#x7F6E;&#x5168;&#x5C40;&#x7EBF;&#x7A0B;&#x6C60;</span>
+   <span class="hljs-keyword">static</span> ExecutorService executorService = Executors.newFixedThreadPool(<span class="hljs-number">2</span>);
+   <span class="hljs-meta">@Test</span>
+   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testAutoProxyAsync</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+         AsyncMessageSubscribe proxy = AsmProxyFactory.getInterfaceImplSupporAsync(
+                        AsyncMessageSubscribe.class, impl, executorService);
+         <span class="hljs-comment">// &#x5F02;&#x6B65;&#x4E0D;&#x5E26;&#x8FD4;&#x56DE;&#x503C;</span>
+         proxy.pullMessage(<span class="hljs-string">&quot;wujiuye&quot;</span>);
+         <span class="hljs-comment">// &#x5F02;&#x6B65;&#x5E26;&#x8FD4;&#x56DE;&#x503C;</span>
+         AsyncResult&lt;String&gt; asyncResult = proxy.doAction(<span class="hljs-string">&quot;sssss&quot;</span>, <span class="hljs-string">&quot;ddd&quot;</span>);
+         System.out.println(asyncResult.get());
+   }
+}
+</code></pre>
+<p>&#x4F60;&#x53EF;&#x80FD;&#x4F1A;&#x95EE;&#xFF0C;&#x8FD9;&#x8FD8;&#x8981;&#x521B;&#x5EFA;&#x4EE3;&#x7406;&#x7C7B;&#x53BB;&#x8C03;&#x7528;&#xFF0C;&#x6211;&#x76F4;&#x63A5;<code>new</code>&#x4E00;&#x4E2A;<code>Runnable</code>&#x653E;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x6267;&#x884C;&#x4E0D;&#x662F;&#x66F4;&#x65B9;&#x4FBF;&#xFF1F;</p>
+<p>&#x786E;&#x5B9E;&#x5982;&#x6B64;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x901A;&#x8FC7;&#x5305;&#x626B;&#x63CF;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x90A3;&#x5C31;&#x4E0D;&#x4E00;&#x6837;&#x4E86;&#xFF0C;<code>spring</code>&#x5C31;&#x662F;&#x901A;&#x8FC7;<code>BeanPostProcess</code>&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x800C;&#x4E14;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x628A;&#x5F02;&#x6B65;&#x6539;&#x4E3A;&#x540C;&#x6B65;&#x65F6;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x53BB;&#x6389;&#x6CE8;&#x89E3;&#xFF0C;&#x800C;&#x5F53;&#x60F3;&#x540C;&#x6B65;&#x6539;&#x5F02;&#x6B65;&#x65F6;&#xFF0C;&#x4E5F;&#x53EA;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x6539;&#x4EE3;&#x7801;&#x3002;</p>
+<h2 id="&#x5F02;&#x6B65;&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;">&#x5F02;&#x6B65;&#x65E0;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</h2>
+<p>&#x6211;&#x4EEC;&#x4EE5;&#x5B9E;&#x73B0;&#x6D88;&#x606F;&#x5F02;&#x6B65;&#x8BA2;&#x9605;&#x4E3A;&#x4F8B;&#xFF0C;&#x4ECB;&#x7ECD;&#x5728;&#x4E0D;&#x4F7F;&#x7528;&#x4EFB;&#x4F55;&#x6846;&#x67B6;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5982;&#x4F55;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#x5C06;&#x8BA2;&#x9605;&#x6D88;&#x606F;&#x65B9;&#x6CD5;&#x7531;&#x540C;&#x6B65;&#x5207;&#x6362;&#x5230;&#x5F02;&#x6B65;&#xFF0C;&#x800C;&#x8FD9;&#x6B63;&#x662F;asyncframework&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#xFF0C;asyncframework&#x53EA;&#x662F;&#x5C06;&#x9759;&#x6001;&#x4EE3;&#x7406;&#x6539;&#x4E3A;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x3002;</p>
+<p>&#x5B9A;&#x4E49;&#x6D88;&#x606F;&#x8BA2;&#x9605;&#x63A5;&#x53E3;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">MessageSubscribeTemplate</span> </span>{
+      &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">subscribeMessage</span><span class="hljs-params">(MessageQueueEnum messageQueue, 
+                                OnReceiveMessageCallback&lt;T&gt; onReceiveMessageCallback,
+                                Class&lt;T&gt; tagClass)</span></span>;
+}
+</code></pre>
+<p>&#x6D88;&#x606F;&#x8BA2;&#x9605;&#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AwsSqsMessageConsumer</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MessageSubscribeTemplate</span> </span>{    
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">subscribeMessage</span><span class="hljs-params">(MessageQueueEnum messageQueue, 
+                                   OnReceiveMessageCallback&lt;T&gt; onReceiveMessageCallback,
+                                   Class&lt;T&gt; tagClass)</span></span>{
+         <span class="hljs-comment">// &#x7F16;&#x5199;&#x5B9E;&#x73B0;&#x903B;&#x8F91; </span>
+    }
+}
+</code></pre>
+<p>&#x63D0;&#x793A;&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;&#x6D88;&#x606F;&#x8BA2;&#x9605;&#x62BD;&#x8C61;&#x4E3A;&#x63A5;&#x53E3;&#xFF1F;&#x56E0;&#x4E3A;&#x5F53;&#x65F6;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x5207;&#x6362;MQ&#x6846;&#x67B6;&#xFF0C;&#x4E00;&#x5F00;&#x59CB;&#x4F7F;&#x7528;RocketMQ&#xFF0C;&#x540E;&#x9762;&#x7531;&#x4E8E;&#x6210;&#x672C;&#x95EE;&#x9898;&#x53C8;&#x5207;&#x6362;&#x5230;&#x4E86;AWS&#x7684;SQS&#x670D;&#x52A1;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x9759;&#x6001;&#x4EE3;&#x7406;&#x5B9E;&#x73B0;&#x6D88;&#x606F;&#x8BA2;&#x9605;&#x7684;&#x540C;&#x6B65;&#x5207;&#x5F02;&#x6B65;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MessageSubscribeTemplateProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">MessageSubscribeTemplate</span> </span>{
+    <span class="hljs-keyword">private</span> ExecutorService executorService; 
+    <span class="hljs-keyword">private</span> MessageSubscribeTemplate target;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MessageSubscribeTemplateProxy</span><span class="hljs-params">(ExecutorService executorService,
+                                         MessageSubscribeTemplate target)</span> </span>{
+        <span class="hljs-keyword">this</span>.target = target;
+          <span class="hljs-keyword">this</span>.executorService = executorService;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">subscribeMessage</span><span class="hljs-params">(MessageQueueEnum var1, OnReceiveMessageCallback var2, Class var3)</span> </span>{
+        <span class="hljs-comment">// &#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x8C03;&#x7528;&#x903B;&#x8F91;&#xFF0C;&#x5C31;&#x662F;&#x653E;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x53BB;&#x6267;&#x884C;</span>
+         executorService.execute(()-&gt;<span class="hljs-keyword">this</span>.target.subscribeMessage(var1, var2, var3)); 
+    }
+}
+</code></pre>
+<p>asyncframework&#x6846;&#x67B6;&#x5C31;&#x662F;&#x5B9E;&#x73B0;&#x52A8;&#x6001;&#x7F16;&#x5199;MessageSubscribeTemplateProxy&#x4EE3;&#x7406;&#x7C7B;&#xFF0C;&#x4EE5;&#x6B64;&#x7701;&#x53BB;&#x540C;&#x6B65;&#x5207;&#x5F02;&#x6B65;&#x6216;&#x5F02;&#x6B65;&#x5207;&#x540C;&#x6B65;&#x65F6;&#x4FEE;&#x6539;MessageSubscribeTemplateProxy&#x4EE3;&#x7406;&#x7C7B;&#x7684;&#x9EBB;&#x70E6;&#x3002;</p>
+<p>&#x6709;&#x4E86;asyncframework&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x7F16;&#x5199;&#x6D88;&#x606F;&#x8BA2;&#x9605;&#x6A21;&#x7248;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;&#x5373;&#x53EF;&#xFF0C;&#x540C;&#x6B65;&#x8FD8;&#x662F;&#x5F02;&#x6B65;&#x6211;&#x4EEC;&#x4E0D;&#x5FC5;&#x5173;&#x7CFB;&#xFF0C;&#x5F53;&#x60F3;&#x8BA9;&#x8BA2;&#x9605;&#x65B9;&#x6CD5;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x5C31;&#x5728;&#x65B9;&#x6CD5;&#x4E0A;&#x6DFB;&#x52A0;@AsyncSubscribe&#x6CE8;&#x89E3;&#x3002;&#x5E76;&#x4E14;&#x652F;&#x6301;&#x63A5;&#x53E3;&#x591A;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x5BF9;&#x67D0;&#x4E9B;&#x65B9;&#x6CD5;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF0C;&#x5C31;&#x53EA;&#x4F1A;&#x662F;&#x8FD9;&#x4E9B;&#x65B9;&#x6CD5;&#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x3002;</p>
+<h2 id="&#x5F02;&#x6B65;&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;">&#x5F02;&#x6B65;&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</h2>
+<p>&#x7B14;&#x8005;&#x5728;&#x5B9E;&#x73B0;&#x652F;&#x6301;&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x65B9;&#x6CD5;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x65F6;&#xFF0C;&#x9047;&#x5230;&#x4E86;&#x4E24;&#x4E2A;&#x5927;&#x96BE;&#x9898;&#xFF1A;</p>
+<ul>
+<li><p>&#x96BE;&#x70B9;&#x4E00;&#xFF1A;&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x65B9;&#x6CD5;&#x5982;&#x4F55;&#x53BB;&#x5B9E;&#x73B0;&#x5F02;&#x6B65;&#xFF1F;</p>
+</li>
+<li><p>&#x96BE;&#x70B9;&#x4E8C;&#xFF1A;&#x5982;&#x4F55;&#x7F16;&#x5199;&#x5B57;&#x8282;&#x7801;&#x5B9E;&#x73B0;&#x6CDB;&#x578B;&#x63A5;&#x53E3;&#x7684;&#x4EE3;&#x7406;&#x7C7B;&#xFF1F;</p>
+</li>
+</ul>
+<p>&#x5728;<code>spring</code>&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x5728;&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x65B9;&#x6CD5;&#x4E0A;&#x6DFB;&#x52A0;<code>@Async</code>&#x6CE8;&#x89E3;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x4E3A;<code>AsyncResult&lt;T&gt;</code>&#xFF0C;&#x7B14;&#x8005;&#x4E5F;&#x53BB;&#x770B;&#x4E86;&#x4E00;&#x4E0B;<code>spring</code>&#x7684;&#x6E90;&#x7801;&#xFF0C;&#x53D1;&#x73B0;<code>AsyncResult</code>&#x662F;&#x4E00;&#x4E2A;<code>Future</code>&#x3002;</p>
+<p>&#x601D;&#x8DEF;&#x6709;&#x662F;&#x6709;&#x4E86;&#xFF0C;&#x4F46;&#x4EC5;&#x4EC5;&#x53EA;&#x662F;&#x4F9D;&#x9760;<code>Future</code>&#x8FD8;&#x662F;&#x5B9E;&#x73B0;&#x4E0D;&#x4E86;&#x7684;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;<code>ExecutorService</code>&#x7684;<code>submit</code>&#x65B9;&#x6CD5;&#x652F;&#x6301;&#x63D0;&#x4EA4;&#x4E00;&#x4E2A;<code>Callable</code>&#x5E26;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x4EFB;&#x52A1;&#xFF0C;&#x5E76;&#x4E14;<code>submit</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;<code>Future</code>&#xFF0C;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;<code>Future</code>&#x7684;<code>get</code>&#x65B9;&#x6CD5;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4F1A;&#x963B;&#x585E;&#xFF0C;&#x76F4;&#x5230;&#x4EFB;&#x52A1;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5728;&#x4EE3;&#x7406;&#x7C7B;&#x65B9;&#x6CD5;&#x4E2D;&#x8C03;&#x7528;<code>Future</code>&#x7684;get&#x65B9;&#x6CD5;&#x7B49;&#x5F85;&#x7ED3;&#x679C;&#xFF0C;&#x518D;&#x5C06;&#x7ED3;&#x679C;&#x5305;&#x88C5;&#x6210;<code>AsyncResult</code>&#x8FD4;&#x56DE;&#xFF0C;&#x8FD9;&#x5C31;&#x4E0D;&#x662F;&#x5F02;&#x6B65;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x540C;&#x6B65;&#x6267;&#x884C;&#x4E86;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x8981;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x5C31;&#x662F;&#xFF1A;&#x4EE3;&#x7406;&#x7C7B;&#x5FC5;&#x987B;&#x8981;&#x5728;&#x5C06;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x540E;&#xFF0C;&#x5C31;&#x8981;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;<code>AsyncResult</code>&#xFF0C;&#x5E76;&#x4E14;&#x8981;&#x786E;&#x4FDD;&#x5F53;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;<code>AsyncResult</code>&#x7684;<code>get</code>&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x83B7;&#x53D6;&#x5230;&#x7684;&#x7ED3;&#x679C;&#x5C31;&#x662F;&#x6700;&#x7EC8;&#x65B9;&#x6CD5;&#x6267;&#x884C;&#x540E;&#x8FD4;&#x56DE;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<p>&#x7B14;&#x8005;&#x60F3;&#x5230;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#xFF1A;&#x5728;&#x4EE3;&#x7406;&#x7C7B;&#x5C06;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x540E;&#xFF0C;&#x7ACB;&#x5373;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;<code>AsyncResult</code>&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD9;&#x4E2A;<code>AsyncResult</code>&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x4EE3;&#x7406;&#x7684;&#x662F;<code>Future</code>&#x7684;get&#x65B9;&#x6CD5;&#xFF0C;&#x5F53;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;<code>AsyncResult</code>&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x7684;get&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x518D;&#x53BB;&#x8C03;&#x7528;<code>Future</code>&#x7684;get&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x5148;&#x5B9E;&#x73B0;<code>AsyncResult</code>&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x975E;&#x963B;&#x585E;&#x7684;<code>Future</code>&#xFF0C;&#x56E0;&#x4E3A;&#x4E0D;&#x9700;&#x8981;&#x963B;&#x585E;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncResult</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Future</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+    <span class="hljs-keyword">private</span> T result;
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AsyncResult</span><span class="hljs-params">(T result)</span> </span>{
+        <span class="hljs-keyword">this</span>.result = result;
+    }    
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">get</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException, ExecutionException </span>{
+        <span class="hljs-keyword">return</span> result;
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">long</span> timeout, TimeUnit unit)</span> <span class="hljs-keyword">throws</span> InterruptedException, ExecutionException, TimeoutException </span>{
+        <span class="hljs-keyword">return</span> get();
+    }
+
+    <span class="hljs-comment">/**
+     * &#x7531;&#x5B57;&#x8282;&#x7801;&#x8C03;&#x7528;
+     *
+     * <span class="hljs-doctag">@param</span> future &#x63D0;&#x4EA4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x6267;&#x884C;&#x8FD4;&#x56DE;&#x7684;future
+     * <span class="hljs-doctag">@param</span> &lt;T&gt;
+     * <span class="hljs-doctag">@return</span>
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function">AsyncResult&lt;T&gt; <span class="hljs-title">newAsyncResultProxy</span><span class="hljs-params">(<span class="hljs-keyword">final</span> Future&lt;AsyncResult&lt;T&gt;&gt; future)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> AsyncResult&lt;T&gt;(<span class="hljs-keyword">null</span>) {
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">get</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException, ExecutionException </span>{
+                AsyncResult&lt;T&gt; asyncResult = future.get();
+                <span class="hljs-keyword">return</span> asyncResult.get();
+            }
+        };
+    }
+
+}
+</code></pre>
+<p><code>newAsyncResultProxy</code>&#x65B9;&#x6CD5;&#x624D;&#x662F;&#x6574;&#x4E2A;&#x5F02;&#x6B65;&#x5B9E;&#x73B0;&#x7684;&#x6700;&#x5173;&#x952E;&#x4E00;&#x6B65;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x662F;&#x7ED9;&#x5B57;&#x8282;&#x7801;&#x751F;&#x6210;&#x7684;&#x4EE3;&#x7406;&#x5BF9;&#x8C61;&#x8C03;&#x7528;&#x7684;&#xFF0C;&#x4EE3;&#x7406;&#x65B9;&#x6CD5;&#x5B9E;&#x9645;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x662F;newAsyncResultProxy&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;AsyncResult&#x3002;&#x5F53;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;<code>AsyncResult</code>&#x7684;<code>get</code>&#x65B9;&#x6CD5;&#x65F6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x53BB;&#x8C03;&#x7528;<code>ExecutorService</code>&#x7684;<code>submit</code>&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x7684;&#x90A3;&#x4E2A;<code>Future</code>&#x7684;<code>get</code>&#x65B9;&#x6CD5;&#x3002;&#x5BF9;&#x4F7F;&#x7528;&#x8005;&#x5C4F;&#x853D;&#x4E86;&#x8FD9;&#x4E2A;&#x963B;&#x585E;&#x83B7;&#x53D6;&#x7ED3;&#x679C;&#x7684;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x8FD8;&#x662F;&#x4EE5;&#x6D88;&#x606F;&#x8BA2;&#x9605;&#x4E3A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-comment">// &#x63A5;&#x53E3;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">AsyncMessageSubscribe</span> </span>{
+    <span class="hljs-meta">@AsyncFunction</span>
+    <span class="hljs-function">AsyncResult&lt;String&gt; <span class="hljs-title">doAction</span><span class="hljs-params">(String s1, String s2)</span></span>;
+}
+
+<span class="hljs-comment">// &#x63A5;&#x53E3;&#x5B9E;&#x73B0;&#x7C7B;</span>
+<span class="hljs-keyword">private</span> AsyncMessageSubscribe impl = <span class="hljs-keyword">new</span> AsyncMessageSubscribe() {
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> AsyncResult&lt;String&gt; <span class="hljs-title">doAction</span><span class="hljs-params">(String s1, String s2)</span> </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> AsyncResult&lt;&gt;(<span class="hljs-string">&quot;current thread name:&quot;</span> + Thread.currentThread().getName());
+    }
+};
+</code></pre>
+<p>asyncframework&#x6846;&#x67B6;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x5B57;&#x8282;&#x7801;&#x6280;&#x672F;&#x751F;&#x6210;&#x7684;&#x5C06;AsyncMessageSubscribe#doAction&#x65B9;&#x6CD5;&#x63D0;&#x4EA4;&#x5230;&#x7EBF;&#x7A0B;&#x6C60;&#x6267;&#x884C;&#x7684;Callable&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;  </p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncMessageSubscribe_doActionCallable</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span>&lt;<span class="hljs-title">AsyncResult</span>&lt;<span class="hljs-title">String</span>&gt;&gt; </span>{
+    <span class="hljs-keyword">private</span> AsyncMessageSubscribe target;
+    <span class="hljs-keyword">private</span> String param1;
+    <span class="hljs-keyword">private</span> String param2;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">AsyncMessageSubscribe_doActionCallable</span><span class="hljs-params">(AsyncMessageSubscribe var1, String var2, String var3)</span> </span>{
+        <span class="hljs-keyword">this</span>.target = var1;
+        <span class="hljs-keyword">this</span>.param1 = var2;
+        <span class="hljs-keyword">this</span>.param2 = var3;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> AsyncResult&lt;String&gt; <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.target.doAction(<span class="hljs-keyword">this</span>.param1, <span class="hljs-keyword">this</span>.param2);
+    }
+}
+</code></pre>
+<p>asyncframework&#x6846;&#x67B6;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x5B57;&#x8282;&#x7801;&#x6280;&#x672F;&#x751F;&#x6210;&#x7684;AsyncMessageSubscribe&#x7684;&#x52A8;&#x6001;&#x4EE3;&#x7406;&#x7C7B;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncMessageSubscribeProxy</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AsyncMessageSubscribe</span> </span>{
+    <span class="hljs-keyword">private</span> ExecutorService executorService; 
+    <span class="hljs-keyword">private</span> AsyncMessageSubscribe target;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">MessageSubscribeTemplateProxy</span><span class="hljs-params">(ExecutorService executorService,
+                                         MessageSubscribeTemplate target)</span> </span>{
+        <span class="hljs-keyword">this</span>.executorService = executorService;
+        <span class="hljs-keyword">this</span>.target = target;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> AsyncResult&lt;String&gt; <span class="hljs-title">doAction</span><span class="hljs-params">(String s1, String s2)</span> </span>{
+         AsyncMessageSubscribe_doActionCallable callable = <span class="hljs-keyword">new</span> AsyncMessageSubscribe_doActionCallable(target, <span class="hljs-string">&quot;wujiuye&quot;</span>, <span class="hljs-string">&quot;hello&quot;</span>);
+         Future result = executorService.submit(callable);
+         AsyncResult&lt;String&gt; asyncResult = AsyncResult.newAsyncResultProxy(result);
+         <span class="hljs-keyword">return</span> asyncResult;
+    }
+}
+</code></pre>
+<h2 id="&#x5728;&#x5B9E;&#x73B0;asyncframework&#x4E2D;&#x8E29;&#x7684;&#x52A8;&#x6001;&#x5B57;&#x8282;&#x7801;&#x5B9E;&#x73B0;&#x6CDB;&#x578B;&#x63A5;&#x53E3;&#x7684;&#x5751;">&#x5728;&#x5B9E;&#x73B0;asyncframework&#x4E2D;&#x8E29;&#x7684;&#x52A8;&#x6001;&#x5B57;&#x8282;&#x7801;&#x5B9E;&#x73B0;&#x6CDB;&#x578B;&#x63A5;&#x53E3;&#x7684;&#x5751;</h2>
+<p>asyncframework&#x6846;&#x67B6;&#x52A8;&#x6001;&#x5B9E;&#x73B0;&#x4EE3;&#x7406;&#x7C7B;&#x5F02;&#x6B65;&#x65B9;&#x6CD5;&#x7684;&#x4EE3;&#x7801;&#x6E90;&#x7801;&#x5728;<code>FutureFunctionHandler</code>&#x8FD9;&#x4E2A;&#x7C7B;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FutureFunctionHandler</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AsyncFunctionHandler</span></span>{
+        <span class="hljs-comment">/**
+             * asyncMethod&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x4E14;&#x8FD4;&#x56DE;&#x503C;&#x7C7B;&#x578B;&#x4E3A;Future&#x7684;&#x5904;&#x7406;
+             *
+             * <span class="hljs-doctag">@param</span> classWriter          &#x7C7B;&#x6539;&#x5199;&#x5668;
+             * <span class="hljs-doctag">@param</span> interfaceClass       &#x63A5;&#x53E3;
+             * <span class="hljs-doctag">@param</span> asyncMethod          &#x5F02;&#x6B65;&#x65B9;&#x6CD5;
+             * <span class="hljs-doctag">@param</span> proxyObjClass        &#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#x7C7B;
+             * <span class="hljs-doctag">@param</span> executorServiceClass &#x7EBF;&#x7A0B;&#x6C60;&#x7684;&#x7C7B;&#x578B;
+             */</span>
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doOverrideAsyncFunc</span><span class="hljs-params">(ClassWriter classWriter, Class&lt;?&gt; interfaceClass, Method asyncMethod, Class&lt;?&gt; proxyObjClass, Class&lt;? extends ExecutorService&gt; executorServiceClass)</span> </span>{
+              ...........
+            <span class="hljs-comment">// invoke submit callable</span>
+            methodVisitor.visitVarInsn(ALOAD, <span class="hljs-number">0</span>);
+            methodVisitor.visitFieldInsn(GETFIELD, ByteCodeUtils.getProxyClassName(proxyObjClass), <span class="hljs-string">&quot;executorService&quot;</span>, Type.getDescriptor(executorServiceClass));
+            methodVisitor.visitVarInsn(ALOAD, index);
+            <span class="hljs-keyword">if</span> (!executorServiceClass.isInterface()) {
+                methodVisitor.visitMethodInsn(INVOKEVIRTUAL, executorServiceClass.getName().replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;/&quot;</span>),
+                        <span class="hljs-string">&quot;submit&quot;</span>, ByteCodeUtils.getFuncDesc(Future.class, Callable.class), <span class="hljs-keyword">false</span>);
+            } <span class="hljs-keyword">else</span> {
+                methodVisitor.visitMethodInsn(INVOKEINTERFACE, executorServiceClass.getName().replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;/&quot;</span>),
+                        <span class="hljs-string">&quot;submit&quot;</span>, ByteCodeUtils.getFuncDesc(Future.class, Callable.class), <span class="hljs-keyword">true</span>);
+            }
+            <span class="hljs-comment">// &#x5C06;&#x8FD4;&#x56DE;&#x503C;&#x5B58;&#x5230;&#x64CD;&#x4F5C;&#x6570;&#x6808;</span>
+            methodVisitor.visitVarInsn(ASTORE, ++index);
+
+            <span class="hljs-comment">// &#x518D;&#x6765;&#x4E00;&#x5C42;&#x4EE3;&#x7406;&#xFF0C;&#x5BF9;&#x5916;&#x90E8;&#x5C4F;&#x853D;&#x7EBF;&#x7A0B;&#x963B;&#x585E;&#x7B49;&#x5F85;</span>
+            methodVisitor.visitVarInsn(ALOAD, index);
+            methodVisitor.visitMethodInsn(INVOKESTATIC, AsyncResult.class.getName().replace(<span class="hljs-string">&quot;.&quot;</span>, <span class="hljs-string">&quot;/&quot;</span>),
+                    <span class="hljs-string">&quot;newAsyncResultProxy&quot;</span>, ByteCodeUtils.getFuncDesc(AsyncResult.class, Future.class),
+                    <span class="hljs-keyword">false</span>);
+
+            methodVisitor.visitInsn(ARETURN);
+            ..............
+        }
+}
+</code></pre>
+<p>&#x7EBF;&#x7A0B;&#x6C60;&#x5728;&#x8C03;&#x7528;<code>AsyncMessageSubscribe_doActionCallable</code>&#x8FD9;&#x4E2A;<code>Callable</code>&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5B83;&#x67E5;&#x627E;&#x7684;call&#x65B9;&#x6CD5;&#x7684;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x662F;()Ljava.lang.Object;&#x3002;&#x56E0;&#x4E3A;<code>Callable</code>&#x662F;&#x4E2A;&#x6CDB;&#x578B;&#x63A5;&#x53E3;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x628A;&#x5B9E;&#x73B0;&#x7C7B;&#x7684;&#x7B7E;&#x540D;&#x548C;&#x5B9E;&#x73B0;&#x7684;<code>call</code>&#x65B9;&#x6CD5;&#x7684;&#x7B7E;&#x540D;&#x6539;&#x4E3A;&#x4E0B;&#x9762;&#x8FD9;&#x6837;&#x53CD;&#x800C;&#x4E0D;&#x884C;&#x3002;</p>
+<pre><code>&#x7C7B;&#x7684;&#x7B7E;&#x540D;&#xFF1A;Ljava/lang/Object;Ljava/util/concurrent/Callable&lt;Lcom/wujiuye/asyncframework/handler/async/AsyncResult&lt;Ljava/lang/String;&gt;;&gt;;&quot;
+
+call&#x65B9;&#x6CD5;&#x7684;&#x7B7E;&#x540D;&#xFF1A; 
+()Lcom/wujiuye/asyncframework/handler/async/AsyncResult&lt;Ljava/lang/String;&gt;;
+</code></pre><p>&#x56E0;&#x4E3A;&#x6CDB;&#x578B;<code>&lt;T&gt;</code>&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x662F;<code>Ljava.lang.Object;</code>&#x3002;</p>
+<p>&#x5982;<code>AsyncResult</code>&#x6CDB;&#x578B;&#x7C7B;&#x3002;(&#x9009;&#x90E8;&#x5206;)</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AsyncResult</span>&lt;<span class="hljs-title">T</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">Future</span>&lt;<span class="hljs-title">T</span>&gt; </span>{
+
+    <span class="hljs-keyword">private</span> T result;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> T <span class="hljs-title">get</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> InterruptedException, ExecutionException </span>{
+        <span class="hljs-keyword">return</span> result;
+    }
+
+}
+</code></pre>
+<p><code>AsyncResult</code>&#x6CDB;&#x578B;&#x7C7B;&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x5B57;&#x8282;&#x7801;&#x4FE1;&#x606F;&#x3002;(&#x9009;&#x90E8;&#x5206;)</p>
+<pre><code>public class com.wujiuye.asyncframework.handler.async.AsyncResult&lt;T&gt; implements java.util.concurrent.Future&lt;T&gt; {
+  private T result;
+    descriptor: Ljava/lang/Object;
+
+  public T get() throws java.lang.InterruptedException, java.util.concurrent.ExecutionException;
+    descriptor: ()Ljava/lang/Object;
+    Code:
+       0: aload_0
+       1: getfield      #2   // Field result:Ljava/lang/Object;
+       4: areturn
+</code></pre><p>&#x7C7B;&#x578B;<code>T</code>&#x7684;<code>descriptor&#xFF08;&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x7B26;&#xFF09;</code>&#x4E3A;<code>Ljava/lang/Object;</code>&#xFF0C;&#x4EE5;&#x53CA;<code>get</code>&#x65B9;&#x6CD5;&#x4E2D;&#xFF0C;<code>getfield</code>&#x6307;&#x4EE4;&#x6307;&#x5B9A;&#x7684;&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x7B26;&#x4E5F;&#x662F;<code>Ljava/lang/Object;</code>&#x3002;</p>
+<p><code>Callable</code>&#x63A5;&#x53E3;&#x4E5F;&#x662F;&#x6CDB;&#x578B;&#x63A5;&#x53E3;&#xFF0C;&#x7F16;&#x8BD1;&#x540E;<code>call</code>&#x65B9;&#x6CD5;&#x7684;&#x65B9;&#x6CD5;&#x63CF;&#x8FF0;&#x7B26;&#x4FBF;&#x662F;<code>()Ljava.lang.Object;</code>&#x3002;</p>
+<pre><code>@FunctionalInterface
+public interface Callable&lt;V&gt; {
+    V call() throws Exception;
+}
+</code></pre><p>&#x6240;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x901A;&#x8FC7;&#x5B57;&#x8282;&#x7801;&#x5B9E;&#x73B0;<code>Callable</code>&#x63A5;&#x53E3;&#xFF0C;<code>call</code>&#x65B9;&#x6CD5;&#x4E0D;&#x8981;&#x8BBE;&#x7F6E;&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#xFF0C;&#x8BBE;&#x7F6E;&#x65B9;&#x6CD5;&#x7B7E;&#x540D;&#x610F;&#x5473;&#x7740;&#x4E5F;&#x8981;&#x6539;&#x53D8;&#x65B9;&#x6CD5;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#xFF0C;&#x4E00;&#x6539;&#x53D8;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x7EBF;&#x7A0B;&#x6C60;&#x4E2D;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;<code>Callable</code>&#x7684;<code>call</code>&#x65B9;&#x6CD5;&#x629B;&#x51FA;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x9519;&#x8BEF;&#xFF0C;&#x539F;&#x56E0;&#x662F;&#x6839;&#x636E;<code>Callable</code>&#x63A5;&#x53E3;&#x7684;<code>call</code>&#x65B9;&#x6CD5;&#x7684;&#x63CF;&#x8FF0;&#x7B26;&#x5728;&#x8FD9;&#x4E2A;<code>Callable</code>&#x5BF9;&#x8C61;&#x7684;&#x7C7B;(Class)&#x4E2D;&#x627E;&#x4E0D;&#x5230;&#x5BF9;&#x5E94;&#x7684;<code>call</code>&#x65B9;&#x6CD5;&#x3002;</p>
+<hr>
+<p>A&#xFF1A;&#x65E2;&#x7136;<code>spring</code>&#x90FD;&#x5DF2;&#x7ECF;&#x63D0;&#x4F9B;&#x8FD9;&#x6837;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F60;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD8;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x8FD9;&#x6837;&#x7684;&#x6846;&#x67B6;&#x5462;&#xFF1F;</p>
+<p>Q&#xFF1A;&#x56E0;&#x4E3A;&#x6211;&#x4E4B;&#x524D;&#x5199;&#x7EC4;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x6709;&#x9700;&#x8981;&#x7528;&#x5230;&#xFF0C;&#x4F46;&#x53C8;&#x4E0D;&#x60F3;&#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x5C31;&#x628A;spring&#x4F9D;&#x8D56;&#x5230;&#x9879;&#x76EE;&#x4E2D;&#xFF0C;&#x4F1A;&#x6BD4;&#x8F83;&#x81C3;&#x80BF;&#x3002;&#x5176;&#x6B21;&#xFF0C;&#x4E5F;&#x662F;&#x56E0;&#x4E3A;&#x559C;&#x6B22;&#x6298;&#x817E;&#xFF0C;&#x60F3;&#x8981;&#x628A;&#x81EA;&#x5DF1;&#x7684;&#x60F3;&#x6CD5;&#x5B9E;&#x73B0;&#x3002;</p>
+<p><code>asyncframework</code>&#x53EF;&#x4EE5;&#x53D6;&#x4EE3;<code>spring</code>&#x7684;<code>@Async</code>&#x4F7F;&#x7528;&#xFF0C;&#x53EA;&#x8981;&#x5C01;&#x88C5;&#x4E00;&#x4E2A;<code>starter</code>&#x5305;&#xFF0C;&#x4F9D;&#x9760;<code>spring</code>&#x63D0;&#x4F9B;&#x7684;<code>BeanPostProcess</code>&#x5B9E;&#x73B0;&#x65E0;&#x7F1D;&#x6574;&#x5408;&#x3002;&#x4F46;<code>spring</code>&#x90FD;&#x5DF2;&#x7ECF;&#x63D0;&#x4F9B;&#x4E86;&#xFF0C;&#x6211;&#x5C31;&#x4E0D;&#x60F3;&#x53BB;&#x9020;&#x8F6E;&#x5B50;&#x4E86;&#xFF0C;<code>asyncframework</code>&#x6211;&#x63A8;&#x8350;&#x662F;&#x5728;&#x975E;<code>spring</code>&#x9879;&#x76EE;&#x4E2D;&#x4F7F;&#x7528;&#x3002; </p>
+<p><font color="#666666">&#x53D1;&#x5E03;&#x4E8E;&#xFF1A;2021 &#x5E74; 06 &#x6708; 27 &#x65E5;</font><br><font color="#666666">&#x4F5C;&#x8005;: &#x5434;&#x5C31;&#x4E1A;</font><br><font color="#666666">&#x94FE;&#x63A5;:<a href="https://mp.weixin.qq.com/s/PHsUNpvo6UQT5M1o2ZhWjQ" target="_blank">https://mp.weixin.qq.com/s/PHsUNpvo6UQT5M1o2ZhWjQ</a></font><br><font color="#666666">&#x6765;&#x6E90;: &#x5FAE;&#x4FE1;&#x516C;&#x4F17;&#x53F7;&#x201C;Java&#x827A;&#x672F;&#x201D;&#xFF08;&#x300A;&#x7B14;&#x8005;&#x5F00;&#x6E90;&#x7684;asyncframework&#x6846;&#x67B6;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7C7B;Spring&#x6846;&#x67B6;@Async&#x6CE8;&#x89E3;&#x529F;&#x80FD;&#x7684;&#x300B;&#xFF09;&#xFF0C;&#x672A;&#x7ECF;&#x4F5C;&#x8005;&#x8BB8;&#x53EF;&#xFF0C;&#x7981;&#x6B62;&#x8F6C;&#x8F7D;!</font><br></p>
+<p><img src="../qrcode/javaskill_qrcode_02.png" alt="Java&#x827A;&#x672F;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 字节码实战开源项目">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="vine.html" class="navigation navigation-next " aria-label="Next page: 一款轻量级的分布式调用链路追踪Java探针vine">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"实现类Spring框架@Async注解功能的asyncframework","level":"1.11.1","depth":2,"next":{"title":"一款轻量级的分布式调用链路追踪Java探针vine","level":"1.11.2","depth":2,"path":"opensourceprojects/vine.md","ref":"opensourceprojects/vine.md","articles":[]},"previous":{"title":"字节码实战开源项目","level":"1.11","depth":1,"path":"opensourceprojects/README.md","ref":"opensourceprojects/README.md","articles":[{"title":"实现类Spring框架@Async注解功能的asyncframework","level":"1.11.1","depth":2,"path":"opensourceprojects/asyncframework.md","ref":"opensourceprojects/asyncframework.md","articles":[]},{"title":"一款轻量级的分布式调用链路追踪Java探针vine","level":"1.11.2","depth":2,"path":"opensourceprojects/vine.md","ref":"opensourceprojects/vine.md","articles":[]},{"title":"运行时解析json生成class的json-class-generator","level":"1.11.3","depth":2,"path":"opensourceprojects/jcg.md","ref":"opensourceprojects/jcg.md","articles":[]},{"title":"JavaAgent入门级项目Beemite","level":"1.11.4","depth":2,"path":"opensourceprojects/beemite.md","ref":"opensourceprojects/beemite.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"opensourceprojects/asyncframework.md","mtime":"2021-06-27T04:55:25.202Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T05:28:16.815Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

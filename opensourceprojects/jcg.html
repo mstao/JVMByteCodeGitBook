@@ -1,0 +1,1480 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>运行时解析json生成class的json-class-generator · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="beemite.html" />
+    
+    
+    <link rel="prev" href="vine.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    《深入浅出JVM字节码》
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../xuyan.html">
+            
+                <a href="../xuyan.html">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter01/">
+            
+                <a href="../chapter01/">
+            
+                    
+                    第一章 Java虚拟机基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter01/01.html">
+            
+                <a href="../chapter01/01.html">
+            
+                    
+                    为什么会出现StackOverflowError
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter01/02.html">
+            
+                <a href="../chapter01/02.html">
+            
+                    
+                    JVM运行时内存结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter01/03.html">
+            
+                <a href="../chapter01/03.html">
+            
+                    
+                    线程、栈与栈桢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter01/04.html">
+            
+                <a href="../chapter01/04.html">
+            
+                    
+                    局部变量表与操作数栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../chapter01/05.html">
+            
+                <a href="../chapter01/05.html">
+            
+                    
+                    基于栈的指令集架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../chapter01/06.html">
+            
+                <a href="../chapter01/06.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" >
+            
+                <span>
+            
+                    
+                    第二章 深入理解Class文件结构
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" >
+            
+                <span>
+            
+                    
+                    项目框架搭建
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" >
+            
+                <span>
+            
+                    
+                    解析魔数
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" >
+            
+                <span>
+            
+                    
+                    解析版本号
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" >
+            
+                <span>
+            
+                    
+                    解析常量池
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" >
+            
+                <span>
+            
+                    
+                    解析class文件的访问标志
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" >
+            
+                <span>
+            
+                    
+                    解析this与super
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" >
+            
+                <span>
+            
+                    
+                    解析实现的接口
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" >
+            
+                <span>
+            
+                    
+                    解析字段表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" >
+            
+                <span>
+            
+                    
+                    解析方法表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" >
+            
+                <span>
+            
+                    
+                    解析class文件的属性表
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" >
+            
+                <span>
+            
+                    
+                    解析整个Class文件结构
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" >
+            
+                <span>
+            
+                    
+                    属性二次解析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.13" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    第三章 字节码指令集
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    从Hello Word出发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    字段与方法描述符
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    读写局部变量表与操作数栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    基于对象的操作
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" >
+            
+                <span>
+            
+                    
+                    访问静态字段与静态方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" >
+            
+                <span>
+            
+                    
+                    调用方法的四条指令
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" >
+            
+                <span>
+            
+                    
+                    不同类型返回值对应的指令
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" >
+            
+                <span>
+            
+                    
+                    创建数组与访问数组元素
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" >
+            
+                <span>
+            
+                    
+                    条件分支语句的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" >
+            
+                <span>
+            
+                    
+                    循环语句的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" >
+            
+                <span>
+            
+                    
+                    异常处理的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" >
+            
+                <span>
+            
+                    
+                    第四章 深入理解类加载
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" >
+            
+                <span>
+            
+                    
+                    动态加载类的两种方式
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" >
+            
+                <span>
+            
+                    
+                    类加载过程
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" >
+            
+                <span>
+            
+                    
+                    双亲委派模型
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" >
+            
+                <span>
+            
+                    
+                    自定义类加载器加载字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    第五章 ASM快速上手
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    框架简介
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    访问者模式在ASM框架中的应用
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    在项目中使用ASM
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" >
+            
+                <span>
+            
+                    
+                    创建类并创建方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" >
+            
+                <span>
+            
+                    
+                    给类添加字段
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" >
+            
+                <span>
+            
+                    
+                    改写类并改写方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" >
+            
+                <span>
+            
+                    
+                    创建类并实现接口
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" >
+            
+                <span>
+            
+                    
+                    继承类并重写父类方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    第六章 实战一：JDK与Cglib动态代理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" >
+            
+                <span>
+            
+                    
+                    JDK动态代理实现原理分析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" >
+            
+                <span>
+            
+                    
+                    动手实现JDK动态代理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    Cglib动态代理实现原理分析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" >
+            
+                <span>
+            
+                    
+                    动手实现Cglib动态代理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    第七章 实战二：APM数据采集之探针埋点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    Instrumentation简介
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    编写Java Agent插件
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" >
+            
+                <span>
+            
+                    
+                    在类加载之前修改类的字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" >
+            
+                <span>
+            
+                    
+                    使用ASM为方法插入埋点
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" >
+            
+                <span>
+            
+                    
+                    在类加载之后修改类的字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    第八章 进阶篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    深入理解类型检查与栈映射桢
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    深入理解泛型与泛型方法调用
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    字节码实战开源项目
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="asyncframework.html">
+            
+                <a href="asyncframework.html">
+            
+                    
+                    实现类Spring框架@Async注解功能的asyncframework
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="vine.html">
+            
+                <a href="vine.html">
+            
+                    
+                    一款轻量级的分布式调用链路追踪Java探针vine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.11.3" data-path="jcg.html">
+            
+                <a href="jcg.html">
+            
+                    
+                    运行时解析json生成class的json-class-generator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="beemite.html">
+            
+                <a href="beemite.html">
+            
+                    
+                    JavaAgent入门级项目Beemite
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >运行时解析json生成class的json-class-generator</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8FD0;&#x884C;&#x65F6;&#x89E3;&#x6790;json&#x751F;&#x6210;class&#x7684;json-class-generator">&#x8FD0;&#x884C;&#x65F6;&#x89E3;&#x6790;json&#x751F;&#x6210;class&#x7684;json-class-generator</h1>
+<p><img src="../qrcode/javaskill_qrcode_01.png" alt="Java&#x827A;&#x672F;"></p>
+<p><code>JCG</code>(<code>json-class-generator</code>)<sup><a href="#fn_1" id="reffn_1">1</a></sup>&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x7528;&#x4E8E;&#x8FD0;&#x884C;&#x65F6;&#x6839;&#x636E;<code>json</code>&#x751F;&#x6210;<code>class</code>&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x4E0D;&#x591A;&#x3002;&#x7531;&#x4E8E;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x751F;&#x6210;&#x7684;<code>class</code>&#xFF0C;&#x6240;&#x4EE5;&#x751F;&#x6210;&#x7684;<code>class</code>&#x4E5F;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x53CD;&#x5C04;&#x53BB;&#x4F7F;&#x7528;&#x3002;</p>
+<h2 id="&#x6280;&#x672F;&#x6808;">&#x6280;&#x672F;&#x6808;</h2>
+<ul>
+<li><code>gson</code>&#xFF1A;<code>json</code>&#x89E3;&#x6790;&#x5DE5;&#x5177;&#xFF1B;</li>
+<li><code>asm</code>&#xFF1A;&#x5B57;&#x8282;&#x7801;&#x751F;&#x6210;&#x5DE5;&#x5177;&#xFF1B;</li>
+</ul>
+<h2 id="&#x7279;&#x6027;">&#x7279;&#x6027;</h2>
+<ul>
+<li>&#x5C06;<code>json</code>&#x89E3;&#x6790;&#x751F;&#x6210;<code>class</code>&#xFF0C;&#x4E3A;<code>class</code>&#x6DFB;&#x52A0;&#x5B57;&#x6BB5;&#x548C;&#x5BF9;&#x5E94;&#x5B57;&#x6BB5;&#x7684;<code>get</code>&#x3001;<code>set</code>&#x65B9;&#x6CD5;&#xFF1B;</li>
+<li>&#x652F;&#x6301;&#x4E3A;&#x751F;&#x6210;&#x7684;<code>class</code>&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF0C;&#x4F7F;&#x7528;&#x6CE8;&#x89E3;&#x89C4;&#x5219;&#x58F0;&#x660E;&#x5C06;&#x6CE8;&#x89E3;&#x6DFB;&#x52A0;&#x5728;&#x7C7B;&#x6216;&#x662F;&#x5B57;&#x6BB5;&#x4E0A;&#xFF1B;</li>
+</ul>
+<h2 id="&#x57FA;&#x7840;&#x529F;&#x80FD;&#xFF1A;&#x5C06;json&#x89E3;&#x6790;&#x751F;&#x6210;class">&#x57FA;&#x7840;&#x529F;&#x80FD;&#xFF1A;&#x5C06;json&#x89E3;&#x6790;&#x751F;&#x6210;class</h2>
+<p>&#x4E3A;&#x9A8C;&#x8BC1;&#x7ED3;&#x679C;&#x7684;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x53EF;&#x914D;&#x7F6E;&#x5C06;&#x672C;&#x5DE5;&#x5177;&#x5305;&#x751F;&#x6210;&#x7684;<code>class</code>&#x8F93;&#x51FA;&#x5230;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x8FC7;<code>idea</code>&#x6253;&#x5F00;&#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x751F;&#x6210;&#x7684;<code>java</code>&#x4EE3;&#x7801;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonToClassTest</span> </span>{
+
+    <span class="hljs-keyword">static</span> {
+        <span class="hljs-comment">// value&#x4E3A;&#x8F93;&#x51FA;&#x7684;&#x76EE;&#x5F55;</span>
+        System.setProperty(<span class="hljs-string">&quot;jcg.classSavaPath&quot;</span>, <span class="hljs-string">&quot;/Users/wjy/MyProjects/JsonClassGenerator&quot;</span>);
+    }
+}
+</code></pre>
+<p>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F53;<code>JSON</code>&#x6709;&#x5B57;&#x6BB5;&#x4E3A;<code>null</code>&#x65F6;&#x5219;&#x4F1A;&#x89E3;&#x6790;&#x5931;&#x8D25;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x4E0D;&#x662F;&#x5FC5;&#x987B;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;&#x8BA9;<code>JCG</code>&#x5FFD;&#x7565;&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonToClassTest</span> </span>{
+
+    <span class="hljs-keyword">static</span> {
+         <span class="hljs-comment">/**
+          * &#x662F;&#x5426;&#x5FFD;&#x7565;&#x7A7A;&#x5B57;&#x6BB5;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A;false
+          */</span>
+        System.setProperty(<span class="hljs-string">&quot;jcg.ignore_null_field&quot;</span>, <span class="hljs-string">&quot;true&quot;</span>);
+    }
+}
+</code></pre>
+<p>&#x65E2;&#x7136;&#x8981;&#x7528;&#x5230;&#x52A8;&#x6001;<code>json</code>&#x89E3;&#x6790;&#x751F;&#x6210;<code>class</code>&#xFF0C;&#x90A3;&#x4E48;&#x8BF4;&#x660E;<code>json</code>&#x6211;&#x4EEC;&#x662F;&#x901A;&#x8FC7;<code>API</code>&#x6216;&#x8005;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5E93;&#x83B7;&#x53D6;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x7B80;&#x5355;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;<code>json</code>&#x5B57;&#x7B26;&#x4E32;&#x6765;&#x6D4B;&#x8BD5;&#x4E86;&#x3002;</p>
+<p>&#x5047;&#x8BBE;<code>json</code>&#x4E3A;&#xFF1A;</p>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;name&quot;</span>,
+  <span class="hljs-string">&quot;price&quot;</span>:<span class="hljs-number">1.0</span>,
+  <span class="hljs-string">&quot;nodes&quot;</span>:[
+     {
+      <span class="hljs-string">&quot;id&quot;</span>:<span class="hljs-number">222</span>,
+      <span class="hljs-string">&quot;note&quot;</span>:<span class="hljs-string">&quot;xxx&quot;</span>
+     }
+  ]
+}
+</code></pre>
+<p>&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x671F;&#x671B;<code>JCG</code>&#x5DE5;&#x5177;&#x4E3A;&#x6211;&#x4EEC;&#x751F;&#x6210;&#x7684;<code>class</code>&#x5E94;&#x8BE5;&#x662F;&#x8FD9;&#x6837;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Xxx</span> </span>{
+    <span class="hljs-keyword">private</span> String name;
+    <span class="hljs-keyword">private</span> BigDecimal price;
+    <span class="hljs-keyword">private</span> List&lt;Yyy&gt; nodes;
+    <span class="hljs-comment">// get&#x3001;set&#x65B9;&#x6CD5;&#x7701;&#x7565;</span>
+}
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Yyy</span> </span>{
+    <span class="hljs-keyword">private</span> Integer id;
+    <span class="hljs-keyword">private</span> String note;
+    <span class="hljs-comment">// get&#x3001;set&#x65B9;&#x6CD5;&#x7701;&#x7565;</span>
+}
+</code></pre>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5F00;&#x59CB;&#x4F7F;&#x7528;<code>JCG</code>&#x5DE5;&#x5177;&#x5C06;&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D;&#x7684;<code>json</code>&#x89E3;&#x6790;&#x751F;&#x6210;<code>class</code></p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonToClassTest</span> </span>{
+
+    <span class="hljs-keyword">static</span> {
+        System.setProperty(<span class="hljs-string">&quot;jcg.classSavaPath&quot;</span>, <span class="hljs-string">&quot;/Users/wjy/MyProjects/JsonClassGenerator&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>{
+        String json = <span class="hljs-string">&quot;{\&quot;name\&quot;:\&quot;offer name\&quot;,\&quot;price\&quot;:1.0,\&quot;nodes\&quot;:[{\&quot;id\&quot;:222,\&quot;note\&quot;:\&quot;xxx\&quot;}]}&quot;</span>;
+        String className = <span class="hljs-string">&quot;com.wujiuye.jcg.model.TestBean&quot;</span>;
+
+        <span class="hljs-comment">// &#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E3A;&#x8FD9;&#x4E32;json&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x540D;&#xFF0C;</span>
+        <span class="hljs-comment">// &#x7136;&#x540E;&#x8C03;&#x7528;JcgClassFactory&#x7684;generateResponseClassByJson&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x751F;&#x6210;Class</span>
+        Class&lt;?&gt; cls = JcgClassFactory.getInstance()
+                                .generateResponseClassByJson(className, json);
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-comment">// &#x9A8C;&#x8BC1;&#x751F;&#x6210;&#x7684;class&#x662F;&#x5426;&#x6B63;&#x786E;</span>
+            Object obj = <span class="hljs-keyword">new</span> Gson().fromJson(json, cls);
+            System.out.println(obj.getClass());
+            <span class="hljs-comment">// &#x9A8C;&#x8BC1;&#x751F;&#x6210;&#x7684;get/set&#x65B9;&#x6CD5;&#x662F;&#x5426;&#x80FD;&#x6B63;&#x5E38;&#x8C03;&#x7528;</span>
+            Method method = obj.getClass().getDeclaredMethod(<span class="hljs-string">&quot;getNodes&quot;</span>);
+            Object result = method.invoke(obj);
+            System.out.println(result);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+</code></pre>
+<p>&#x7ED3;&#x679C;&#x7701;&#x7565;&#x3002;</p>
+<h2 id="&#x7279;&#x8272;&#xFF1A;&#x4E3A;&#x751F;&#x6210;&#x7684;class&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;">&#x7279;&#x8272;&#xFF1A;&#x4E3A;&#x751F;&#x6210;&#x7684;class&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;</h2>
+<p>&#x4E3A;&#x4E86;&#x4F7F;&#x7528;&#x67D0;&#x4E9B;&#x6846;&#x67B6;&#x7684;&#x7279;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5728;&#x5C06;<code>json</code>&#x89E3;&#x6790;&#x751F;&#x6210;<code>class</code>&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4E3A;<code>class</code>&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#x3002;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x60F3;&#x5C06;<code>JCG</code>&#x751F;&#x6210;&#x7684;<code>class</code>&#x7528;&#x4E8E;&#x540E;&#x7EED;&#x7684;<code>json</code>&#x89E3;&#x6790;&#xFF0C;&#x90A3;&#x4E48;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x5728;<code>class</code>&#x4E0A;&#x6216;&#x8005;&#x5B57;&#x6BB5;&#x4E0A;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x8BF8;&#x5982;<code>@JsonIgnore</code>&#x4E4B;&#x7C7B;&#x7684;&#x6CE8;&#x89E3;&#xFF0C;&#x8FD9;&#x4E9B;&#x9700;&#x6C42;<code>JCG</code>&#x90FD;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;&#x3002;</p>
+<p>&#x5047;&#x8BBE;&#xFF0C;&#x6211;&#x4EEC;&#x60F3;&#x5728;&#x89E3;&#x6790;<code>json</code>&#x751F;&#x6210;&#x7684;<code>class</code>&#x4E0A;&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;<code>@TestAnnno</code>&#x6CE8;&#x89E3;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonToClassTest</span> </span>{
+
+    <span class="hljs-keyword">static</span> {
+        System.setProperty(<span class="hljs-string">&quot;jcg.classSavaPath&quot;</span>, <span class="hljs-string">&quot;/Users/wjy/MyProjects/JsonClassGenerator&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>{
+        String json = <span class="hljs-string">&quot;{\&quot;name\&quot;:\&quot;offer name\&quot;,\&quot;price\&quot;:1.0,\&quot;nodes\&quot;:[{\&quot;id\&quot;:222,\&quot;note\&quot;:\&quot;xxx\&quot;}]}&quot;</span>;
+        String className = <span class="hljs-string">&quot;com.wujiuye.jcg.model.TestBean&quot;</span>;
+
+        <span class="hljs-comment">// &#x6CE8;&#x89E3;&#x89C4;&#x5219;</span>
+        AnnotationRule annotationRule = <span class="hljs-keyword">new</span> AnnotationRule(TestAnno.class, ElementType.TYPE, <span class="hljs-string">&quot;&quot;</span>);
+        annotationRule.putAttr(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;122&quot;</span>);
+        <span class="hljs-comment">// &#x6CE8;&#x518C;&#x6CE8;&#x89E3;&#x89C4;&#x5219;</span>
+        AnnotationRuleRegister.registRule(className, annotationRule);
+
+        <span class="hljs-comment">// &#x8C03;&#x7528;JcgClassFactory&#x7684;generateResponseClassByJson&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x751F;&#x6210;Class</span>
+        Class&lt;?&gt; cls = JcgClassFactory.getInstance()
+                    .generateResponseClassByJson(className, json);
+    }
+
+}
+</code></pre>
+<p>&#x6CE8;&#x89E3;&#x89C4;&#x5219;&#x6620;&#x5C04;&#x7C7B;<code>AnnotationRule</code>&#x7684;&#x6784;&#x9020;&#x65B9;&#x6CD5;&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li>&#x53C2;&#x6570;<code>1</code>&#xFF1A;&#x8981;&#x6DFB;&#x52A0;&#x7684;&#x6CE8;&#x89E3;&#x7684;&#x7C7B;&#x578B;&#xFF1B;</li>
+<li>&#x53C2;&#x6570;<code>2</code>&#xFF1A;&#x6CE8;&#x89E3;&#x5728;&#x7C7B;&#x4E0A;&#x8FD8;&#x662F;&#x5B57;&#x6BB5;&#x4E0A;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x548C;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;&#x9700;&#x8981;&#x914D;&#x548C;&#x4F7F;&#x7528;&#x3002;&#xFF08;&#x53EA;&#x652F;&#x6301;&#x6DFB;&#x52A0;&#x5728;&#x7C7B;&#x4E0A;&#x3001;&#x6DFB;&#x52A0;&#x5728;&#x5B57;&#x6BB5;&#x4E0A;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#xFF09;&#xFF1B;</li>
+<li>&#x53C2;&#x6570;<code>3</code>&#xFF1A;&#x6DFB;&#x52A0;&#x7684;&#x8DEF;&#x5F84;&#xFF0C;<code>JCG</code>&#x6839;&#x636E;&#x8DEF;&#x5F84;&#x901A;&#x8FC7;&#x6DF1;&#x5EA6;&#x904D;&#x5386;&#x5BFB;&#x627E;&#x76EE;&#x6807;&#x5B57;&#x6BB5;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x6DFB;&#x52A0;&#x5728;&#x7C7B;&#x4E0A;&#xFF0C;&#x5219;&#x4F1A;&#x52A0;&#x5728;&#x76EE;&#x5F55;&#x5B57;&#x6BB5;&#x5BF9;&#x5E94;&#x7684;<code>class</code>&#x4E0A;&#xFF1B;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x53C2;&#x6570;<code>2</code>&#x4E3A;<code>ElementType.TYPE</code>&#xFF0C;&#x53C2;&#x6570;<code>3</code>&#x4E3A;<code>&quot;&quot;</code>&#xFF0C;&#x90A3;&#x4E48;&#x7ED3;&#x679C;&#x5C31;&#x662F;&#x5728;<code>json</code>&#x751F;&#x6210;&#x7684;<code>class</code>&#x4E0A;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF1B;&#x5982;&#x679C;&#x53C2;&#x6570;<code>2</code>&#x4E3A;<code>ElementType.FIELD</code>&#xFF0C;&#x53C2;&#x6570;<code>3</code>&#x4E3A;<code>&quot;&quot;</code>&#x5219;&#x4F1A;&#x62A5;&#x9519;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x53C2;&#x6570;<code>3</code>&#x4E3A;<code>&quot;name&quot;</code>&#xFF0C;&#x5219;&#x662F;&#x5728;<code>name</code>&#x5B57;&#x6BB5;&#x4E0A;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#x3002;</p>
+<p>&#x5728;&#x524D;&#x9762;&#x7ED9;&#x51FA;&#x7684;<code>json</code>&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x7531;&#x4E8E;<code>nodes</code>&#x5B57;&#x6BB5;&#x662F;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x4E14;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x4E0D;&#x662F;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x56E0;&#x6B64;<code>JCG</code>&#x4E5F;&#x4F1A;&#x4E3A;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x751F;&#x6210;&#x4E00;&#x4E2A;<code>class</code>&#x3002;&#x5982;&#x679C;&#x60F3;&#x4E3A;<code>nodes</code>&#x5143;&#x7D20;&#x7C7B;&#x578B;&#x5BF9;&#x5E94;&#x7684;<code>class</code>&#x4E5F;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>path</code>&#x5B9E;&#x73B0;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
+<ul>
+<li>&#x53C2;&#x6570;<code>2</code>&#x4E3A;<code>ElementType.TYPE</code>&#xFF0C;&#x53C2;&#x6570;<code>3</code>&#x4E3A;<code>&quot;nodes&quot;</code>&#xFF0C;&#x5219;&#x4F1A;&#x5728;<code>nodes</code>&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x4E0A;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF1B;</li>
+<li>&#x53C2;&#x6570;<code>2</code>&#x4E3A;<code>ElementType.FIELD</code>&#xFF0C;&#x53C2;&#x6570;<code>3</code>&#x4E3A;<code>&quot;nodes&quot;</code>&#xFF0C;&#x5219;&#x53EA;&#x662F;&#x5728;<code>nodes</code>&#x5B57;&#x6BB5;&#x4E0A;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF1B;</li>
+<li>&#x53C2;&#x6570;<code>2</code>&#x4E3A;<code>ElementType.FIELD</code>&#xFF0C;&#x53C2;&#x6570;<code>3</code>&#x4E3A;<code>&quot;nodes.id&quot;</code>&#xFF0C;&#x5219;&#x4F1A;&#x5728;<code>nodes</code>&#x5143;&#x7D20;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x7684;<code>id</code>&#x5B57;&#x6BB5;&#x4E0A;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;&#xFF1B;</li>
+</ul>
+<p>&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonToClassTest</span> </span>{
+
+    <span class="hljs-keyword">static</span> {
+        System.setProperty(<span class="hljs-string">&quot;jcg.classSavaPath&quot;</span>, <span class="hljs-string">&quot;/Users/wjy/MyProjects/JsonClassGenerator&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span>  </span>{
+        String json = <span class="hljs-string">&quot;{\&quot;name\&quot;:\&quot;offer name\&quot;,\&quot;price\&quot;:1.0,\&quot;nodes\&quot;:[{\&quot;id\&quot;:222,\&quot;note\&quot;:\&quot;xxx\&quot;}]}&quot;</span>;
+        String className = <span class="hljs-string">&quot;com.wujiuye.jcg.model.TestBean&quot;</span>;
+
+        <span class="hljs-comment">// &#x7ED9;nodes&#x6570;&#x7EC4;&#x7684;&#x5143;&#x7D20;&#x7C7B;&#x578B;class&#x6DFB;&#x52A0;@TestAnno</span>
+        AnnotationRule fieldRule = <span class="hljs-keyword">new</span> AnnotationRule(TestAnno.class, ElementType.TYPE, <span class="hljs-string">&quot;nodes&quot;</span>);
+        fieldRule.putAttr(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;12233&quot;</span>);
+        AnnotationRuleRegister.registRule(className, fieldRule);
+
+        <span class="hljs-comment">// &#x7ED9;nodes&#x6570;&#x7EC4;&#x5143;&#x7D20;&#x7C7B;&#x578B;class&#x7684;id&#x5B57;&#x6BB5;&#x6DFB;&#x52A0;&#x6CE8;&#x89E3;@TestAnno</span>
+        AnnotationRule fieldClassRule = <span class="hljs-keyword">new</span> AnnotationRule(TestAnno.class, ElementType.FIELD, <span class="hljs-string">&quot;nodes.id&quot;</span>);
+        fieldClassRule.putAttr(<span class="hljs-string">&quot;type&quot;</span>, ElementType.FIELD);
+        AnnotationRuleRegister.registRule(className, fieldClassRule);
+
+        <span class="hljs-comment">// &#x8C03;&#x7528;JcgClassFactory&#x7684;generateResponseClassByJson&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x751F;&#x6210;Class</span>
+        Class&lt;?&gt; cls = JcgClassFactory.getInstance()
+                    .generateResponseClassByJson(className, json);
+    }
+
+}
+</code></pre>
+<p>&#x6CE8;&#x89E3;&#x89C4;&#x5219;&#x6620;&#x5C04;&#x7C7B;<code>AnnotationRule</code>&#x7684;<code>putAttr</code>&#x65B9;&#x6CD5;&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li><code>key</code>: &#x5BF9;&#x5E94;&#x6CE8;&#x89E3;&#x7684;&#x5C5E;&#x6027;&#x540D;&#xFF1B;</li>
+<li><code>value</code>: &#x5BF9;&#x5E94;&#x6CE8;&#x89E3;&#x7684;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x5C5E;&#x6027;&#x503C;&#x5FC5;&#x987B;&#x662F;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3001;<code>String</code>&#x3001;&#x679A;&#x4E3E;&#x3001;&#x6CE8;&#x89E3;&#xFF0C;&#x76EE;&#x524D;&#x4E0D;&#x652F;&#x6301;&#x6570;&#x7EC4;&#xFF1B;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x6CE8;&#x89E3;&#x7684;&#x5C5E;&#x6027;&#x4E5F;&#x662F;&#x6CE8;&#x89E3;&#x7C7B;&#x578B;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>putAttr</code>&#x65B9;&#x6CD5;&#x7ED9;<code>AnnotationRule</code>&#x6DFB;&#x52A0;&#x4E00;&#x4E2A;<code>AnnotationRule</code>&#x5B9E;&#x73B0;&#xFF0C;&#x4EE3;&#x7406;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonToClassTest</span> </span>{
+
+    <span class="hljs-keyword">static</span> {
+        System.setProperty(<span class="hljs-string">&quot;jcg.classSavaPath&quot;</span>, <span class="hljs-string">&quot;/Users/wjy/MyProjects/JsonClassGenerator&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">()</span> </span>{
+        String json = <span class="hljs-string">&quot;{\&quot;name\&quot;:\&quot;offer name\&quot;,\&quot;price\&quot;:1.0,\&quot;nodes\&quot;:[{\&quot;id\&quot;:222,\&quot;note\&quot;:\&quot;xxx\&quot;}]}&quot;</span>;
+        String className = <span class="hljs-string">&quot;com.wujiuye.jcg.model.TestBean&quot;</span>;
+
+        AnnotationRule fieldRule = <span class="hljs-keyword">new</span> AnnotationRule(TestAnno.class, ElementType.TYPE, <span class="hljs-string">&quot;nodes&quot;</span>);
+        fieldRule.putAttr(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;12233&quot;</span>);
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;@TestAnno&#x7684;map&#x5C5E;&#x6027;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#x4E3A;&#x6CE8;&#x89E3;&#x7C7B;&#x578B;</span>
+        AnnotationRule annoRule = <span class="hljs-keyword">new</span> AnnotationRule(Map.class, <span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;&quot;</span>);
+        annoRule.putAttr(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;haha&quot;</span>);
+        <span class="hljs-comment">// </span>
+        fieldRule.putAttr(<span class="hljs-string">&quot;map&quot;</span>, annoRule);
+        AnnotationRuleRegister.registRule(className, fieldRule);
+
+        <span class="hljs-comment">// &#x8C03;&#x7528;JcgClassFactory&#x7684;generateResponseClassByJson&#x65B9;&#x6CD5;&#x5373;&#x53EF;&#x751F;&#x6210;Class</span>
+        Class&lt;?&gt; cls = JcgClassFactory.getInstance()
+                    .generateResponseClassByJson(className, json);
+    }
+
+}
+</code></pre>
+<p>&#x751F;&#x6210;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-meta">@TestAnno</span>(
+    value = <span class="hljs-string">&quot;12233&quot;</span>,
+    map = <span class="hljs-meta">@Map</span>(<span class="hljs-string">&quot;haha&quot;</span>)
+)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestBean</span>$$<span class="hljs-title">Nodes</span> </span>{
+    <span class="hljs-keyword">private</span> Integer id;
+    <span class="hljs-keyword">private</span> String note;
+    <span class="hljs-comment">// get/set&#x7701;&#x7565;</span>
+}
+</code></pre>
+<p><code>TestBean$$Nodes</code>&#x662F;<code>JCG</code>&#x4E3A;<code>json</code>&#x4E2D;&#x7684;<code>nodes</code>&#x5B57;&#x6BB5;&#x751F;&#x6210;&#x7684;&#x4E00;&#x4E2A;<code>class</code>&#x3002;</p>
+<h2 id="&#x590D;&#x6742;&#x6CE8;&#x89E3;&#x7684;&#x652F;&#x6301;">&#x590D;&#x6742;&#x6CE8;&#x89E3;&#x7684;&#x652F;&#x6301;</h2>
+<p>&#x9488;&#x5BF9;&#x6CE8;&#x89E3;&#x5C5E;&#x6027;&#x662F;&#x6570;&#x7EC4;&#x7684;&#x73A9;&#x6CD5;&#x6BD4;&#x8F83;&#x590D;&#x6742;&#xFF0C;<code>JCG</code>&#x5728;<code>1.0.1</code>&#x7248;&#x672C;&#x5F00;&#x59CB;&#x652F;&#x6301;&#xFF0C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@author</span> wujiuye 2020/06/08
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JsonToClassTest</span> </span>{
+
+    <span class="hljs-keyword">static</span> {
+        System.setProperty(<span class="hljs-string">&quot;jcg.classSavaPath&quot;</span>, <span class="hljs-string">&quot;/Users/wjy/MyProjects/JsonClassGenerator&quot;</span>);
+    }
+
+    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test2</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> ClassNotFoundException </span>{
+        String json = <span class="hljs-string">&quot;{\&quot;name\&quot;:\&quot;offer name\&quot;,\&quot;price\&quot;:1.0,\&quot;nodes\&quot;:[{\&quot;id\&quot;:222,\&quot;note\&quot;:\&quot;xxx\&quot;}]}&quot;</span>;
+        String className = <span class="hljs-string">&quot;com.wujiuye.jcg.model.OfferBean&quot;</span>;
+
+        AnnotationRule fieldRule = <span class="hljs-keyword">new</span> AnnotationRule(TestAnno.class, ElementType.TYPE, <span class="hljs-string">&quot;nodes&quot;</span>);
+        fieldRule.putAttr(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;12233&quot;</span>);
+
+        <span class="hljs-comment">// &#x6CE8;&#x89E3;&#x7684;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#x4E3A;&#x6CE8;&#x89E3;&#x6570;&#x7EC4;&#x7684;&#x5199;&#x6CD5;</span>
+        AnnotationRule[] mapArray = <span class="hljs-keyword">new</span> AnnotationRule[<span class="hljs-number">2</span>];
+        AnnotationRule annoRule = <span class="hljs-keyword">new</span> AnnotationRule(Map.class, <span class="hljs-keyword">null</span>, <span class="hljs-string">&quot;&quot;</span>);
+        annoRule.putAttr(<span class="hljs-string">&quot;value&quot;</span>, <span class="hljs-string">&quot;haha&quot;</span>);
+        mapArray[<span class="hljs-number">0</span>] = annoRule;
+        mapArray[<span class="hljs-number">1</span>] = annoRule;
+        fieldRule.putAttr(<span class="hljs-string">&quot;mapArray&quot;</span>, mapArray);
+
+        <span class="hljs-comment">// &#x6CE8;&#x89E3;&#x7684;&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#x4E3A;&#x679A;&#x4E3E;&#x6570;&#x7EC4;&#x7684;&#x5199;&#x6CD5;</span>
+        ElementType[] typeArray = <span class="hljs-keyword">new</span> ElementType[<span class="hljs-number">2</span>];
+        typeArray[<span class="hljs-number">0</span>] = ElementType.TYPE;
+        typeArray[<span class="hljs-number">1</span>] = ElementType.FIELD;
+        fieldRule.putAttr(<span class="hljs-string">&quot;typeArray&quot;</span>, typeArray);
+
+        AnnotationRuleRegister.registRule(className, fieldRule);
+
+        Class&lt;?&gt; cls = JcgClassFactory.getInstance().generateResponseClassByJson(className, json);
+        <span class="hljs-keyword">try</span> {
+            Object obj = <span class="hljs-keyword">new</span> Gson().fromJson(json, cls);
+            System.out.println(obj.getClass());
+            Method method = obj.getClass().getDeclaredMethod(<span class="hljs-string">&quot;getNodes&quot;</span>);
+            Object result = method.invoke(obj);
+            System.out.println(result);
+        } <span class="hljs-keyword">catch</span> (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+</code></pre>
+<hr>
+<blockquote id="fn_1">
+<sup>1</sup>. <a href="https://github.com/wujiuye/json-class-generator" target="_blank">https://github.com/wujiuye/json-class-generator</a><a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#x21A9;</a>
+</blockquote>
+<p><font color="#666666">&#x53D1;&#x5E03;&#x4E8E;&#xFF1A;2021 &#x5E74; 06 &#x6708; 27 &#x65E5;</font><br><font color="#666666">&#x4F5C;&#x8005;: &#x5434;&#x5C31;&#x4E1A;</font><br><font color="#666666">&#x94FE;&#x63A5;: <a href="https://github.com/wujiuye/json-class-generator" target="_blank">https://github.com/wujiuye/json-class-generator</a></font><br><font color="#666666">&#x6765;&#x6E90;: Github&#x5F00;&#x6E90;&#x9879;&#x76EE;&#xFF1A;json-class-generator&#xFF0C;&#x672A;&#x7ECF;&#x4F5C;&#x8005;&#x8BB8;&#x53EF;&#xFF0C;&#x7981;&#x6B62;&#x8F6C;&#x8F7D;!</font><br></p>
+<p><img src="../qrcode/javaskill_qrcode_02.png" alt="Java&#x827A;&#x672F;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="vine.html" class="navigation navigation-prev " aria-label="Previous page: 一款轻量级的分布式调用链路追踪Java探针vine">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="beemite.html" class="navigation navigation-next " aria-label="Next page: JavaAgent入门级项目Beemite">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"运行时解析json生成class的json-class-generator","level":"1.11.3","depth":2,"next":{"title":"JavaAgent入门级项目Beemite","level":"1.11.4","depth":2,"path":"opensourceprojects/beemite.md","ref":"opensourceprojects/beemite.md","articles":[]},"previous":{"title":"一款轻量级的分布式调用链路追踪Java探针vine","level":"1.11.2","depth":2,"path":"opensourceprojects/vine.md","ref":"opensourceprojects/vine.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"opensourceprojects/jcg.md","mtime":"2021-06-27T04:55:07.894Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-27T05:28:16.815Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
