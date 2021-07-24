@@ -1,0 +1,1577 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>属性二次解析 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="13.html" />
+    
+    
+    <link rel="prev" href="11.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    《深入浅出JVM字节码》
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../xuyan.html">
+            
+                <a href="../xuyan.html">
+            
+                    
+                    序言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../chapter01/">
+            
+                <a href="../chapter01/">
+            
+                    
+                    第一章 Java虚拟机基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../chapter01/01.html">
+            
+                <a href="../chapter01/01.html">
+            
+                    
+                    为什么会出现StackOverflowError
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../chapter01/02.html">
+            
+                <a href="../chapter01/02.html">
+            
+                    
+                    JVM运行时内存结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../chapter01/03.html">
+            
+                <a href="../chapter01/03.html">
+            
+                    
+                    线程、栈与栈桢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../chapter01/04.html">
+            
+                <a href="../chapter01/04.html">
+            
+                    
+                    局部变量表与操作数栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../chapter01/05.html">
+            
+                <a href="../chapter01/05.html">
+            
+                    
+                    基于栈的指令集架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../chapter01/06.html">
+            
+                <a href="../chapter01/06.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第二章 深入理解Class文件结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="00.html">
+            
+                <a href="00.html">
+            
+                    
+                    class文件结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="01.html">
+            
+                <a href="01.html">
+            
+                    
+                    动手实现class文件结构解析器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="02.html">
+            
+                <a href="02.html">
+            
+                    
+                    解析魔数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="03.html">
+            
+                <a href="03.html">
+            
+                    
+                    解析版本号
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="04.html">
+            
+                <a href="04.html">
+            
+                    
+                    解析常量池
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="05.html">
+            
+                <a href="05.html">
+            
+                    
+                    解析class文件的访问标志
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="06.html">
+            
+                <a href="06.html">
+            
+                    
+                    解析this与super符号引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="07.html">
+            
+                <a href="07.html">
+            
+                    
+                    解析接口表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="08.html">
+            
+                <a href="08.html">
+            
+                    
+                    解析字段表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="09.html">
+            
+                <a href="09.html">
+            
+                    
+                    解析方法表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="10.html">
+            
+                <a href="10.html">
+            
+                    
+                    解析class文件的属性表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="11.html">
+            
+                <a href="11.html">
+            
+                    
+                    解析整个Class文件结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.13" data-path="12.html">
+            
+                <a href="12.html">
+            
+                    
+                    属性二次解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.14" data-path="13.html">
+            
+                <a href="13.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" >
+            
+                <span>
+            
+                    
+                    第三章 字节码指令集
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" >
+            
+                <span>
+            
+                    
+                    从Hello Word出发
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    字段与方法描述符
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" >
+            
+                <span>
+            
+                    
+                    读写局部变量表与操作数栈
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" >
+            
+                <span>
+            
+                    
+                    基于对象的操作
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" >
+            
+                <span>
+            
+                    
+                    访问静态字段与静态方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" >
+            
+                <span>
+            
+                    
+                    调用方法的四条指令
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" >
+            
+                <span>
+            
+                    
+                    不同类型返回值对应的指令
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.8" >
+            
+                <span>
+            
+                    
+                    创建数组与访问数组元素
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.9" >
+            
+                <span>
+            
+                    
+                    条件分支语句的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.10" >
+            
+                <span>
+            
+                    
+                    循环语句的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.11" >
+            
+                <span>
+            
+                    
+                    异常处理的实现
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.12" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../chapter04/">
+            
+                <a href="../chapter04/">
+            
+                    
+                    第四章 深入理解类加载
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../chapter04/01.html">
+            
+                <a href="../chapter04/01.html">
+            
+                    
+                    动态加载类的两种方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../chapter04/02.html">
+            
+                <a href="../chapter04/02.html">
+            
+                    
+                    类加载过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../chapter04/03.html">
+            
+                <a href="../chapter04/03.html">
+            
+                    
+                    双亲委派模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../chapter04/04.html">
+            
+                <a href="../chapter04/04.html">
+            
+                    
+                    自定义类加载器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../chapter04/05.html">
+            
+                <a href="../chapter04/05.html">
+            
+                    
+                    本章小结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" >
+            
+                <span>
+            
+                    
+                    第五章 ASM快速上手
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" >
+            
+                <span>
+            
+                    
+                    框架简介
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" >
+            
+                <span>
+            
+                    
+                    访问者模式在ASM框架中的应用
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" >
+            
+                <span>
+            
+                    
+                    在项目中使用ASM
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" >
+            
+                <span>
+            
+                    
+                    创建类并创建方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" >
+            
+                <span>
+            
+                    
+                    给类添加字段
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" >
+            
+                <span>
+            
+                    
+                    改写类并改写方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" >
+            
+                <span>
+            
+                    
+                    创建类并实现接口
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" >
+            
+                <span>
+            
+                    
+                    继承类并重写父类方法
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" >
+            
+                <span>
+            
+                    
+                    第六章 实战一：JDK与Cglib动态代理
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" >
+            
+                <span>
+            
+                    
+                    JDK动态代理实现原理分析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" >
+            
+                <span>
+            
+                    
+                    动手实现JDK动态代理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" >
+            
+                <span>
+            
+                    
+                    Cglib动态代理实现原理分析
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" >
+            
+                <span>
+            
+                    
+                    动手实现Cglib动态代理
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" >
+            
+                <span>
+            
+                    
+                    第七章 实战二：APM数据采集之探针埋点
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" >
+            
+                <span>
+            
+                    
+                    Instrumentation简介
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" >
+            
+                <span>
+            
+                    
+                    编写Java Agent插件
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" >
+            
+                <span>
+            
+                    
+                    在类加载之前修改类的字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" >
+            
+                <span>
+            
+                    
+                    使用ASM为方法插入埋点
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" >
+            
+                <span>
+            
+                    
+                    在类加载之后修改类的字节码
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" >
+            
+                <span>
+            
+                    
+                    本章小结
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" >
+            
+                <span>
+            
+                    
+                    第八章 进阶篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" >
+            
+                <span>
+            
+                    
+                    深入理解类型检查与栈映射桢
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" >
+            
+                <span>
+            
+                    
+                    深入理解泛型与泛型方法调用
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../opensourceprojects/">
+            
+                <a href="../opensourceprojects/">
+            
+                    
+                    字节码实战开源项目
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../opensourceprojects/asyncframework.html">
+            
+                <a href="../opensourceprojects/asyncframework.html">
+            
+                    
+                    实现类Spring框架@Async注解功能的asyncframework
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../opensourceprojects/vine.html">
+            
+                <a href="../opensourceprojects/vine.html">
+            
+                    
+                    一款轻量级的分布式调用链路追踪Java探针vine
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.3" data-path="../opensourceprojects/jcg.html">
+            
+                <a href="../opensourceprojects/jcg.html">
+            
+                    
+                    运行时解析json生成class的json-class-generator
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.4" data-path="../opensourceprojects/beemite.html">
+            
+                <a href="../opensourceprojects/beemite.html">
+            
+                    
+                    JavaAgent入门级项目Beemite
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >属性二次解析</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5C5E;&#x6027;&#x4E8C;&#x6B21;&#x89E3;&#x6790;">&#x5C5E;&#x6027;&#x4E8C;&#x6B21;&#x89E3;&#x6790;</h1>
+<p><img src="../qrcode/javaskill_qrcode_01.png" alt="Java&#x827A;&#x672F;"></p>
+<p>&#x5982;&#x679C;&#x60F3;&#x8981;&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x67D0;&#x4E2A;&#x5C5E;&#x6027;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x518D;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x3002;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x7684;&#x9879;&#x76EE;&#x5BF9;class&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x3001;&#x5B57;&#x6BB5;&#x7ED3;&#x6784;&#x3001;&#x65B9;&#x6CD5;&#x7ED3;&#x6784;&#x7684;&#x5C5E;&#x6027;&#x8868;&#x4E2D;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x5462;&#xFF1F;&#x6211;&#x4EEC;&#x4EE5;&#x5B57;&#x6BB5;&#x7684;ConstantValue&#x5C5E;&#x6027;&#x548C;&#x65B9;&#x6CD5;&#x7684;Code&#x5C5E;&#x6027;&#x4E3A;&#x4F8B;&#x3002;</p>
+<h2 id="&#x89E3;&#x6790;constantvalue&#x5C5E;&#x6027;">&#x89E3;&#x6790;ConstantValue&#x5C5E;&#x6027;</h2>
+<p>ConstantValue&#x5C5E;&#x6027;&#x7528;&#x4E8E;&#x901A;&#x77E5;&#x865A;&#x62DF;&#x673A;&#x5728;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x521D;&#x59CB;&#x5316;&#x9636;&#x6BB5;&#x4E3A;&#x88AB;&#x6807;&#x5FD7;&#x4E3A;ACC_STATIC &amp; ACC_FINAL&#x7684;&#x9759;&#x6001;&#x5E38;&#x91CF;&#x5B57;&#x6BB5;&#x81EA;&#x52A8;&#x8D4B;&#x503C;&#x5E38;&#x91CF;&#x3002;</p>
+<blockquote>
+<p> &#x63D0;&#x793A;&#xFF1A;&#x5728;&#x63A5;&#x53E3;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x5B57;&#x6BB5;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x5668;&#x52A0;&#x4E0A;ACC_STATIC &amp; ACC_FINAL&#x6807;&#x5FD7;&#x3002;</p>
+</blockquote>
+<p>&#x5B57;&#x6BB5;&#x7ED3;&#x6784;&#x7684;&#x5C5E;&#x6027;&#x8868;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;ConstantValue&#x5C5E;&#x6027;&#x3002;&#x5B57;&#x6BB5;&#x7684;&#x7C7B;&#x578B;&#x5FC5;&#x987B;&#x662F;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6216;&#x8005;String&#x7C7B;&#xFF0C;&#x56E0;&#x4E3A;&#x4ECE;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x53EA;&#x80FD;&#x5F15;&#x7528;&#x5230;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x548C;String&#x7C7B;&#x578B;&#x7684;&#x5B57;&#x9762;&#x91CF;&#x3002;</p>
+<p>ConstantValue&#x5C5E;&#x6027;&#x7684;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConstantValue_attribute</span> </span>{  
+    <span class="hljs-keyword">private</span> U2 attribute_name_index;  
+    <span class="hljs-keyword">private</span> U4 attribute_length;  
+    <span class="hljs-keyword">private</span> U2 constantvalue_index;  
+}
+</code></pre>
+<ul>
+<li>attribute_length&#xFF1A;&#x7531;&#x4E8E;ConstantValue&#x5C5E;&#x6027;&#x662F;&#x5B9A;&#x957F;&#x5C5E;&#x6027;&#xFF0C;&#x56E0;&#x6B64;attribute_length&#x7684;&#x503C;&#x56FA;&#x5B9A;&#x4E3A;2&#xFF1B;</li>
+<li>attribute_name_index&#xFF1A;&#x6307;&#x5411;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;CONSTANT_Utf8_info&#x5E38;&#x91CF;&#xFF0C;&#x8BE5;&#x5E38;&#x91CF;&#x8868;&#x793A;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E3A;&#x201C;ConstantValue&#x201D;&#xFF1B;</li>
+<li>constantvalue_index&#xFF1A;&#x6307;&#x5411;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6216;String&#x7C7B;&#x578B;&#x5E38;&#x91CF;&#x3002;</li>
+</ul>
+<p>&#x4E0E;&#x5E38;&#x91CF;&#x6C60;&#x7684;&#x5E38;&#x91CF;&#x7ED3;&#x6784;&#x4E0D;&#x540C;&#xFF0C;&#x5E38;&#x91CF;&#x6C60;&#x7684;&#x5E38;&#x91CF;&#x90FD;&#x6709;&#x4E00;&#x4E2A;tag&#x5B57;&#x6BB5;&#x6620;&#x5C04;&#x5230;&#x54EA;&#x79CD;&#x5E38;&#x91CF;&#x7ED3;&#x6784;&#xFF0C;&#x800C;&#x5C5E;&#x6027;&#x8868;&#x7684;&#x5C5E;&#x6027;&#x7ED3;&#x6784;&#x53EA;&#x80FD;&#x901A;&#x8FC7;attribute_name_index&#x5224;&#x65AD;&#x3002;</p>
+<p>&#x4EE5;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x6765;&#x8BF4;&#x660E;ConstantValue&#x5C5E;&#x6027;&#x7684;&#x4F7F;&#x7528;&#x573A;&#x666F;&#x3002;</p>
+<p>&#x5728;&#x4E00;&#x4E2A;&#x63A5;&#x53E3;&#x4E2D;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5B57;&#x6BB5;&#x5E76;&#x8D4B;&#x503C;&#xFF0C;&#x901A;&#x8FC7;&#x5206;&#x6790;&#x5176;Class&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF0C;&#x627E;&#x5230;&#x8FD9;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x5C5E;&#x6027;&#x8868;&#xFF0C;&#x770B;&#x662F;&#x5426;&#x6709;ConstantValue&#x5C5E;&#x6027;&#x3002;&#x8BE5;&#x6D4B;&#x8BD5;&#x63A5;&#x53E3;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">TestConstantValueInterface</span> </span>{  
+    <span class="hljs-keyword">int</span> value = <span class="hljs-number">1000</span>;  
+}
+</code></pre>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x89E3;&#x6790;&#x5DE5;&#x5177;&#x7C7B;&#xFF0C;&#x6DFB;&#x52A0;&#x652F;&#x6301;&#x89E3;&#x6790;ConstantValue&#x5C5E;&#x6027;&#x7684;&#x9759;&#x6001;&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x5B8C;&#x6210;&#x5C5E;&#x6027;&#x7684;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x5DE5;&#x4F5C;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AttributeProcessingFactory</span> </span>{  
+
+  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> ConstantValue_attribute <span class="hljs-title">processingConstantValue</span><span class="hljs-params">(AttributeInfo attributeInfo)</span> </span>{  
+      ConstantValue_attribute attribute = <span class="hljs-keyword">new</span> ConstantValue_attribute();  
+      attribute.setAttribute_name_index(attributeInfo.getAttribute_name_index());  
+      attribute.setAttribute_length(attributeInfo.getAttribute_length());  
+      attribute.setConstantvalue_index(<span class="hljs-keyword">new</span> U2(attributeInfo.getInfo()[<span class="hljs-number">0</span>], attributeInfo.getInfo()[<span class="hljs-number">1</span>]));  
+      <span class="hljs-keyword">return</span> attribute;  
+  }  
+
+}
+</code></pre>
+<ul>
+<li>processingConstantValue&#xFF1A;&#x65B9;&#x6CD5;&#x8981;&#x6C42;&#x4F20;&#x5165;&#x4E00;&#x4E2A;&#x7ECF;&#x8FC7;&#x4E00;&#x6B21;&#x89E3;&#x6790;&#x540E;&#x7684;ConstantValue&#x5C5E;&#x6027;&#x5BF9;&#x8C61;&#xFF08;AttributeInfo &#xFF09;&#xFF0C;&#x65B9;&#x6CD5;&#x8FD4;&#x56DE;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x540E;&#x751F;&#x6210;&#x7684;ConstantValue&#x5C5E;&#x6027;&#x5BF9;&#x8C61;&#xFF08;ConstantValue_attribute&#xFF09;&#x3002;</li>
+</ul>
+<p>&#x56E0;&#x4E3A;&#x5F53;&#x524D;&#x53EA;&#x5B9E;&#x73B0;&#x4E86;ConstantValue&#x5C5E;&#x6027;&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x6240;&#x4EE5;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4E2D;&#x53EA;&#x5BF9;&#x540D;&#x79F0;&#x4E3A;&#x201C;ConstantValue&#x201D;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#xFF0C;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ConstantValueAttributeTest</span> </span>{  
+
+    <span class="hljs-meta">@Test</span>  
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testConstantValue</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{  
+        ByteBuffer codeBuf = ClassFileAnalysisMain.readFile(<span class="hljs-string">&quot;.../TestConstantValueInterface.class&quot;</span>);  
+        ClassFile classFile = ClassFileAnalysiser.analysis(codeBuf);  
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x6240;&#x6709;&#x5B57;&#x6BB5;  </span>
+        FieldInfo[] fieldInfos = classFile.getFields();  
+        <span class="hljs-keyword">for</span> (FieldInfo fieldInfo : fieldInfos) {  
+            <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5B57;&#x6BB5;&#x7684;&#x6240;&#x6709;&#x5C5E;&#x6027;  </span>
+            AttributeInfo[] attributeInfos = fieldInfo.getAttributes();  
+            <span class="hljs-keyword">if</span> (attributeInfos == <span class="hljs-keyword">null</span> || attributeInfos.length == <span class="hljs-number">0</span>) {  
+                <span class="hljs-keyword">continue</span>;  
+            }  
+            System.out.println(<span class="hljs-string">&quot;&#x5B57;&#x6BB5;&#xFF1A;&quot;</span> + classFile.getConstant_pool()
+                                  [fieldInfo.getName_index().toInt() - <span class="hljs-number">1</span>]);  
+                  <span class="hljs-comment">// &#x904D;&#x5386;&#x6240;&#x6709;&#x5C5E;&#x6027;</span>
+            <span class="hljs-keyword">for</span> (AttributeInfo attributeInfo : attributeInfos) {  
+                <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x7684;&#x540D;&#x79F0;  </span>
+               U2 name_index = attributeInfo.getAttribute_name_index();  
+               CONSTANT_Utf8_info name_info = (CONSTANT_Utf8_info) 
+                     classFile.getConstant_pool()[name_index.toInt() - <span class="hljs-number">1</span>];  
+               String name = <span class="hljs-keyword">new</span> String(name_info.getBytes());  
+                    <span class="hljs-comment">// &#x5982;&#x679C;&#x5C5E;&#x6027;&#x540D;&#x662F;ConstantValue&#xFF0C;&#x5219;&#x5BF9;&#x8BE5;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;</span>
+               <span class="hljs-keyword">if</span> (name.equalsIgnoreCase(<span class="hljs-string">&quot;ConstantValue&quot;</span>)) {  
+                    <span class="hljs-comment">// &#x5C5E;&#x6027;&#x4E8C;&#x6B21;&#x89E3;&#x6790;  </span>
+                    ConstantValue_attribute constantValue = AttributeProcessingFactory.processingConstantValue(attributeInfo);  
+                    <span class="hljs-comment">// &#x53D6;&#x5F97;constantvalue_index&#xFF0C;&#x4ECE;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x53D6;&#x503C;  </span>
+                   U2 cv_index = constantValue.getConstantvalue_index();  
+                   Object cv = classFile.getConstant_pool() [cv_index.toInt() - <span class="hljs-number">1</span>];  
+                   <span class="hljs-comment">// &#x9700;&#x8981;&#x5224;&#x65AD;&#x5E38;&#x91CF;&#x7684;&#x7C7B;&#x578B;  </span>
+                   <span class="hljs-keyword">if</span> (cv <span class="hljs-keyword">instanceof</span> CONSTANT_Utf8_info) {  
+                        System.out.println(<span class="hljs-string">&quot;ConstantValue&#xFF1A;&quot;</span> + cv.toString());  
+                   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cv <span class="hljs-keyword">instanceof</span> CONSTANT_Integer_info) {  
+                        System.out.println(<span class="hljs-string">&quot;ConstantValue&#xFF1A;&quot;</span> +  
+                                ((CONSTANT_Integer_info) cv).getBytes().toInt());  
+                   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cv <span class="hljs-keyword">instanceof</span> CONSTANT_Float_info) {  
+                        <span class="hljs-comment">// todo  </span>
+                   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cv <span class="hljs-keyword">instanceof</span> CONSTANT_Long_info) {  
+                        <span class="hljs-comment">// todo  </span>
+                   } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (cv <span class="hljs-keyword">instanceof</span> CONSTANT_Double_info) {  
+                        <span class="hljs-comment">// todo  </span>
+                   }  
+                }  
+            }  
+        }  
+    }  
+
+}
+</code></pre>
+<p>&#x5BF9;&#x5B57;&#x6BB5;&#x7684;&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x7684;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<ul>
+<li>1&#x3001;&#x89E3;&#x6790;Java&#x7C7B;&#x7F16;&#x8BD1;&#x540E;&#x751F;&#x6210;&#x7684;class&#x6587;&#x4EF6;&#xFF0C;&#x4EE5;&#x4FBF;&#x83B7;&#x53D6;&#x8BE5;&#x63A5;&#x53E3;&#x7684;&#x6240;&#x6709;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;&#xFF1B;</li>
+<li>2&#x3001;&#x904D;&#x5386;&#x5B57;&#x6BB5;&#x8868;&#xFF1B;</li>
+<li>3&#x3001;&#x904D;&#x5386;&#x6BCF;&#x4E2A;&#x5B57;&#x6BB5;&#x7684;&#x5C5E;&#x6027;&#x8868;&#xFF1B;</li>
+<li>4&#x3001;&#x6839;&#x636E;&#x5C5E;&#x6027;&#x7684;&#x540D;&#x79F0;&#x5728;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x5230;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x53D6;&#x5230;&#x5C5E;&#x6027;&#x540D;&#xFF0C;&#x518D;&#x6839;&#x636E;&#x5C5E;&#x6027;&#x540D;&#x53BB;&#x8C03;&#x7528;&#x5BF9;&#x5E94;&#x5C5E;&#x6027;&#x7ED3;&#x6784;&#x7684;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x65B9;&#x6CD5;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x3002;</li>
+</ul>
+<p>&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="images/chapter02_12_01.png" alt="image-20210724203841306"></p>
+<p>&#x5982;&#x56FE;&#x6240;&#x793A;&#xFF0C;&#x5B57;&#x6BB5;&#x540D;&#x4E3A;value&#x7684;&#x5B57;&#x6BB5;&#x5176;&#x5C5E;&#x6027;&#x8868;&#x6709;&#x4E00;&#x4E2A;ConstantValue&#x5C5E;&#x6027;&#xFF0C;&#x5E38;&#x91CF;&#x503C;&#x662F;1000&#x3002;</p>
+<h2 id="&#x89E3;&#x6790;code&#x5C5E;&#x6027;">&#x89E3;&#x6790;Code&#x5C5E;&#x6027;</h2>
+<p>&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x7F16;&#x8BD1;&#x540E;&#x751F;&#x6210;&#x7684;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x5B58;&#x50A8;&#x5728;&#x65B9;&#x6CD5;&#x7ED3;&#x6784;&#x7684;&#x5C5E;&#x6027;&#x8868;&#x7684;Code&#x5C5E;&#x6027;&#x4E2D;&#xFF0C;&#x4F46;&#x5E76;&#x975E;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x90FD;&#x6709;Code&#x5C5E;&#x6027;&#xFF0C;&#x5982;&#x58F0;&#x660E;&#x4E3A;native&#x7684;&#x65B9;&#x6CD5;&#x3001;abstract&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x3001;&#x63A5;&#x53E3;&#x4E2D;&#x7684;&#x975E;default&#x65B9;&#x6CD5;&#x5C31;&#x6CA1;&#x6709;Code&#x5C5E;&#x6027;&#x3002;&#x5B9E;&#x4F8B;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;<init>&#x3001;&#x7C7B;&#x6216;&#x63A5;&#x53E3;&#x7684;&#x521D;&#x59CB;&#x5316;&#x65B9;&#x6CD5;<clinit>&#x90FD;&#x4F1A;&#x6709;Code&#x5C5E;&#x6027;&#x3002;</clinit></init></p>
+<p>&#x8FD9;&#x4E00;&#x8282;&#x6211;&#x4EEC;&#x5C06;&#x901A;&#x8FC7;&#x5B8C;&#x6210;&#x5BF9;Code&#x5C5E;&#x6027;&#x7684;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x4E86;&#x89E3;Code&#x5C5E;&#x6027;&#xFF0C;&#x4E86;&#x89E3;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x662F;&#x5982;&#x4F55;&#x5B58;&#x50A8;&#x7684;&#x5728;Code&#x5C5E;&#x6027;&#x4E2D;&#x7684;&#x3002;</p>
+<p>&#x65B9;&#x6CD5;&#x7ED3;&#x6784;&#x7684;&#x5C5E;&#x6027;&#x8868;&#x4E2D;&#x6700;&#x591A;&#x53EA;&#x80FD;&#x6709;&#x4E00;&#x4E2A;Code&#x5C5E;&#x6027;&#xFF0C;Code&#x5C5E;&#x6027;&#x662F;&#x79CD;&#x53EF;&#x53D8;&#x957F;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x5C5E;&#x6027;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x65B9;&#x6CD5;&#x7684;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x53CA;&#x76F8;&#x5173;&#x8F85;&#x52A9;&#x4FE1;&#x606F;&#x3002;</p>
+<p>Code&#x5C5E;&#x6027;&#x7684;&#x7ED3;&#x6784;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th><strong><em>&#x5B57;&#x6BB5;&#x540D;</em></strong></th>
+<th><strong><em>&#x7C7B;&#x578B;</em></strong></th>
+<th><strong><em>&#x8BF4;&#x660E;</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attribute_name_index</td>
+<td>u2</td>
+<td>&#x6307;&#x5411;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x201C;Code&#x201D;&#x5E38;&#x91CF;&#x7684;&#x7D22;&#x5F15;</td>
+</tr>
+<tr>
+<td>attribute_length</td>
+<td>u4</td>
+<td>&#x5C5E;&#x6027;&#x7684;&#x957F;&#x5EA6;&#xFF08;&#x4E0D;&#x5305;&#x62EC;attribute_name_index&#x548C;attribute_length&#x5360;&#x7528;&#x7684;&#x957F;&#x5EA6;&#xFF09;</td>
+</tr>
+<tr>
+<td>max_stack</td>
+<td>u2</td>
+<td>&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x7684;&#x6700;&#x5927;&#x6DF1;&#x5EA6;</td>
+</tr>
+<tr>
+<td>max_locals</td>
+<td>u2</td>
+<td>&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x7684;&#x6700;&#x5927;&#x6DF1;&#x5EA6;</td>
+</tr>
+<tr>
+<td>code_length</td>
+<td>u4</td>
+<td>code&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;</td>
+</tr>
+<tr>
+<td>code</td>
+<td>u1[]</td>
+<td>&#x5B58;&#x50A8;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;</td>
+</tr>
+<tr>
+<td>exception_table_length</td>
+<td>u2</td>
+<td>&#x5F02;&#x5E38;&#x8868;&#x7684;&#x957F;&#x5EA6;</td>
+</tr>
+<tr>
+<td>exception_table</td>
+<td>exception[]</td>
+<td>&#x5F02;&#x5E38;&#x8868;</td>
+</tr>
+<tr>
+<td>attributes_count</td>
+<td>u2</td>
+<td>&#x5C5E;&#x6027;&#x603B;&#x6570;</td>
+</tr>
+<tr>
+<td>attributes</td>
+<td>attribute_info[]</td>
+<td>&#x5C5E;&#x6027;&#x8868;</td>
+</tr>
+</tbody>
+</table>
+<p>max_stack&#x4E0E;max_locals&#x5206;&#x522B;&#x5BF9;&#x5E94;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x7684;&#x5927;&#x5C0F;&#x548C;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<p>code&#x9879;&#x7528;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x6570;&#x7EC4;&#x5B58;&#x50A8;&#x8BE5;&#x65B9;&#x6CD5;&#x7684;&#x6240;&#x6709;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#xFF0C;code_length&#x5B58;&#x50A8;&#x8BE5;code&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x3002;</p>
+<p>&#x5C5E;&#x6027;&#x4E5F;&#x53EF;&#x4EE5;&#x6709;&#x5C5E;&#x6027;&#x8868;&#xFF0C;attributes&#x9879;&#x4FBF;&#x662F;Code&#x5C5E;&#x6027;&#x7684;&#x5C5E;&#x6027;&#x8868;&#xFF0C;&#x5728;Code&#x5C5E;&#x6027;&#x4E2D;&#xFF0C;&#x5C5E;&#x6027;&#x8868;&#x53EF;&#x80FD;&#x5B58;&#x5728;&#x7684;&#x5C5E;&#x6027;&#x5982;LineNumerTable&#x5C5E;&#x6027;&#x3001;LocalVariableTable&#x5C5E;&#x6027;&#x3002;</p>
+<p>LineNumerTable&#x5C5E;&#x6027;&#xFF1A;&#x88AB;&#x7528;&#x6765;&#x6620;&#x5C04;&#x6E90;&#x7801;&#x6587;&#x4EF6;&#x4E2D;&#x7ED9;&#x5B9A;&#x7684;&#x4EE3;&#x7801;&#x884C;&#x53F7;&#x5BF9;&#x5E94;code[]&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x4E2D;&#x7684;&#x54EA;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x5728;&#x8C03;&#x8BD5;&#x65F6;&#x7528;&#x5230;&#xFF0C;&#x5728;&#x65B9;&#x6CD5;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#x6253;&#x5370;&#x5F02;&#x5E38;&#x6808;&#x4FE1;&#x606F;&#x4E5F;&#x4F1A;&#x7528;&#x5230;&#x3002;</p>
+<p>LocalVariableTable&#x5C5E;&#x6027;&#xFF1A;&#x7528;&#x6765;&#x63CF;&#x8FF0;code[]&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x8303;&#x56F4;&#x5185;&#xFF0C;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x4E2D;&#x67D0;&#x4E2A;&#x4F4D;&#x7F6E;&#x5B58;&#x50A8;&#x7684;&#x53D8;&#x91CF;&#x7684;&#x540D;&#x79F0;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x7528;&#x4E8E;&#x4E0E;&#x6E90;&#x7801;&#x6587;&#x4EF6;&#x4E2D;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x540D;&#x505A;&#x6620;&#x5C04;&#x3002;&#x8BE5;&#x5C5E;&#x6027;&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x7F16;&#x8BD1;&#x5230;class&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8BE5;&#x5C5E;&#x6027;&#xFF0C;&#x90A3;&#x4E48;&#x67E5;&#x770B;&#x53CD;&#x7F16;&#x8BD1;&#x540E;&#x7684;java&#x4EE3;&#x7801;&#x5C06;&#x4F1A;&#x4F7F;&#x7528;&#x8BF8;&#x5982;arg0&#x3001;arg1&#x3001;arg2&#x4E4B;&#x7C7B;&#x7684;&#x540D;&#x79F0;&#x4EE3;&#x66FF;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x540D;&#x79F0;&#x3002;</p>
+<p>exception_table&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;&#x6240;&#x6709;try-catch&#x4FE1;&#x606F;&#xFF0C;exception_table_length&#x5B58;&#x50A8;&#x8BE5;&#x5F02;&#x5E38;&#x8868;&#x6570;&#x7EC4;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x5F02;&#x5E38;&#x8868;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#x90FD;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#xFF0C;&#x5F02;&#x5E38;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x8868;&#x683C;&#x6240;&#x793A;&#x3002;</p>
+<table>
+<thead>
+<tr>
+<th><strong><em>&#x5B57;&#x6BB5;&#x540D;</em></strong></th>
+<th><strong><em>&#x7C7B;&#x578B;</em></strong></th>
+<th><strong><em>&#x8BF4;&#x660E;</em></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start_pc</td>
+<td>u2</td>
+<td>try&#x7684;&#x5F00;&#x59CB;&#x4F4D;&#x7F6E;&#xFF0C;&#x5728;code[]&#x4E2D;&#x7684;&#x7D22;&#x5F15;</td>
+</tr>
+<tr>
+<td>end_pc</td>
+<td>u2</td>
+<td>try&#x7684;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#xFF0C;&#x5728;code[]&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x3002;</td>
+</tr>
+<tr>
+<td>handler_pc</td>
+<td>u2</td>
+<td>&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7684;&#x8D77;&#x70B9;&#xFF0C;&#x5728;code[]&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#x3002;</td>
+</tr>
+<tr>
+<td>catch_type</td>
+<td>u2</td>
+<td>&#x4E3A;0&#x76F8;&#x5F53;finally&#x5757;&#x3002;&#x4E0D;&#x4E3A;0&#x65F6;&#xFF0C;&#x6307;&#x5411;&#x5E38;&#x91CF;&#x6C60;&#x4E2D;&#x67D0;&#x4E2A;CONSTANT_Class_info&#x5E38;&#x91CF;&#x7684;&#x7D22;&#x5F15;&#xFF0C;&#x8868;&#x793A;&#x9700;&#x8981;&#x6355;&#x83B7;&#x7684;&#x5F02;&#x5E38;&#xFF0C;&#x53EA;&#x6709;[start_pc,end_pc)&#x8303;&#x56F4;&#x5185;&#x629B;&#x51FA;&#x7684;&#x5F02;&#x5E38;&#x662F;&#x6307;&#x5B9A;&#x7684;&#x7C7B;&#x6216;&#x5B50;&#x7C7B;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x624D;&#x4F1A;&#x8DF3;&#x8F6C;&#x5230;handler_pc&#x6307;&#x5411;&#x7684;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4E3A;Code&#x5C5E;&#x6027;&#x7ED3;&#x6784;&#x521B;&#x5EFA;Java&#x7C7B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Code_attribute</span> </span>{  
+
+    <span class="hljs-keyword">private</span> U2 attribute_name_index;  
+    <span class="hljs-keyword">private</span> U4 attribute_length;  
+    <span class="hljs-keyword">private</span> U2 max_stack;  
+    <span class="hljs-keyword">private</span> U2 max_locals;  
+    <span class="hljs-keyword">private</span> U4 code_length;  
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">byte</span>[] code;  
+        <span class="hljs-keyword">private</span> U4 exception_table_length;  
+      <span class="hljs-keyword">private</span> Exception[] exception_table;  
+    <span class="hljs-keyword">private</span> U2 attributes_count;  
+    <span class="hljs-keyword">private</span> AttributeInfo[] attributes;  
+      <span class="hljs-comment">// &#x5F02;&#x5E38;&#x8868;&#x4E2D;&#x6BCF;&#x9879;&#x7684;&#x7ED3;&#x6784;</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Exception</span> </span>{  
+        <span class="hljs-keyword">private</span> U2 start_pc;  
+        <span class="hljs-keyword">private</span> U2 end_pc;  
+        <span class="hljs-keyword">private</span> U2 handler_pc;  
+        <span class="hljs-keyword">private</span> U2 catch_type;  
+    }  
+
+}
+</code></pre>
+<p>&#x5BF9;Code&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x4E3B;&#x8981;&#x662F;&#x60F3;&#x62FF;&#x5230;&#x5B57;&#x8282;&#x7801;&#x4FE1;&#x606F;&#xFF0C;&#x5C5E;&#x6027;&#x8868;&#x548C;&#x5F02;&#x5E38;&#x8868;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x89E3;&#x6790;&#x4E86;&#xFF0C;&#x5F02;&#x5E38;&#x8868;&#x5728;&#x672C;&#x4E66;&#x7B2C;&#x4E09;&#x7AE0;&#x518D;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p>&#x5BF9;Code&#x5C5E;&#x6027;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AttributeProcessingFactory</span></span>{
+        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Code_attribute <span class="hljs-title">processingCode</span><span class="hljs-params">(AttributeInfo attributeInfo)</span> </span>{ 
+          Code_attribute code = <span class="hljs-keyword">new</span> Code_attribute();  
+          ByteBuffer body = ByteBuffer.wrap(attributeInfo.getInfo());  
+          <span class="hljs-comment">// &#x64CD;&#x4F5C;&#x6570;&#x6808;&#x5927;&#x5C0F;  </span>
+          code.setMax_stack(<span class="hljs-keyword">new</span> U2(body.get(),body.get()));  
+          <span class="hljs-comment">// &#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x5927;&#x5C0F;  </span>
+          code.setMax_locals(<span class="hljs-keyword">new</span> U2(body.get(),body.get()));  
+          <span class="hljs-comment">// &#x5B57;&#x8282;&#x7801;&#x6570;&#x7EC4;&#x957F;&#x5EA6;  </span>
+          code.setCode_length(<span class="hljs-keyword">new</span> U4(body.get(),body.get(),body.get(),body.get()));  
+          <span class="hljs-comment">// &#x89E3;&#x6790;&#x83B7;&#x53D6;&#x5B57;&#x8282;&#x7801;  </span>
+          <span class="hljs-keyword">byte</span>[] byteCode = <span class="hljs-keyword">new</span> <span class="hljs-keyword">byte</span>[code.getCode_length().toInt()];  
+          body.get(byteCode,<span class="hljs-number">0</span>,byteCode.length);  
+          code.setCode(byteCode);  
+          <span class="hljs-keyword">return</span> code;  
+     }
+}
+</code></pre>
+<p>&#x73B0;&#x5728;&#x7F16;&#x5199;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF0C;&#x5148;&#x5C06;class&#x6587;&#x4EF6;&#x89E3;&#x6790;&#x4E3A;&#x4E00;&#x4E2A;ClassFile&#x5BF9;&#x8C61;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x904D;&#x5386;&#x8BE5;ClassFile&#x4E2D;&#x7684;&#x65B9;&#x6CD5;&#x8868;&#xFF0C;&#x83B7;&#x53D6;&#x6BCF;&#x4E2A;&#x65B9;&#x6CD5;&#x4E2D;&#x7684;Code&#x5C5E;&#x6027;&#xFF0C;&#x518D;&#x5BF9;Code&#x5C5E;&#x6027;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x89E3;&#x6790;&#x3002;</p>
+<p>&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CodeAttributeTest</span> </span>{  
+
+    <span class="hljs-meta">@Test</span>  
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCodeAttribute</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{  
+        ByteBuffer codeBuf = ClassFileAnalysisMain.readFile(<span class="hljs-string">&quot;RecursionAlgorithmMain.class&quot;</span>);  
+        ClassFile classFile = ClassFileAnalysiser.analysis(codeBuf);  
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x8868;  </span>
+        MethodInfo[] methodInfos = classFile.getMethods();  
+            <span class="hljs-comment">// &#x904D;&#x5386;&#x65B9;&#x6CD5;&#x8868;</span>
+        <span class="hljs-keyword">for</span> (MethodInfo methodInfo : methodInfos) {  
+            <span class="hljs-comment">// &#x83B7;&#x53D6;&#x65B9;&#x6CD5;&#x7684;&#x5C5E;&#x6027;&#x8868;  </span>
+            AttributeInfo[] attributeInfos = methodInfo.getAttributes();  
+            <span class="hljs-keyword">if</span> (attributeInfos == <span class="hljs-keyword">null</span> || attributeInfos.length == <span class="hljs-number">0</span>) {  
+                <span class="hljs-keyword">continue</span>;  
+            }  
+            System.out.println(<span class="hljs-string">&quot;&#x65B9;&#x6CD5;&#xFF1A;&quot;</span> + classFile.getConstant_pool()
+                                [methodInfo.getName_index().toInt() - <span class="hljs-number">1</span>]);  
+            <span class="hljs-comment">// &#x904D;&#x5386;&#x5C5E;&#x6027;&#x8868;</span>
+                        <span class="hljs-keyword">for</span> (AttributeInfo attributeInfo : attributeInfos) {  
+                <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5C5E;&#x6027;&#x7684;&#x540D;&#x79F0;  </span>
+                U2 name_index = attributeInfo.getAttribute_name_index();  
+                CONSTANT_Utf8_info name_info = (CONSTANT_Utf8_info) 
+                        classFile.getConstant_pool()[name_index.toInt() - <span class="hljs-number">1</span>];  
+               String name = <span class="hljs-keyword">new</span> String(name_info.getBytes());  
+                           <span class="hljs-comment">// &#x5BF9;Code&#x5C5E;&#x6027;&#x4E8C;&#x6B21;&#x89E3;&#x6790;</span>
+                <span class="hljs-keyword">if</span> (name.equalsIgnoreCase(<span class="hljs-string">&quot;Code&quot;</span>)) {  
+                    <span class="hljs-comment">// &#x5C5E;&#x6027;&#x4E8C;&#x6B21;&#x89E3;&#x6790;  </span>
+                    Code_attribute code = AttributeProcessingFactory.processingCode(attributeInfo);  
+                    System.out.println(<span class="hljs-string">&quot;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x5927;&#x5C0F;&#xFF1A;&quot;</span> + code.getMax_stack().toInt());  
+                    System.out.println(<span class="hljs-string">&quot;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x8868;&#x5927;&#x5C0F;&#xFF1A;&quot;</span> + code.getMax_locals().toInt());  
+                    System.out.println(<span class="hljs-string">&quot;&#x5B57;&#x8282;&#x7801;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#xFF1A;&quot;</span> + code.getCode_length().toInt());  
+                    System.out.println(<span class="hljs-string">&quot;&#x5B57;&#x8282;&#x7801;&#xFF1A;&quot;</span>);  
+                    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">byte</span> b : code.getCode()) {  
+                        System.out.print((b &amp; <span class="hljs-number">0xff</span>) + <span class="hljs-string">&quot; &quot;</span>);  
+                    }  
+                    System.out.println(<span class="hljs-string">&quot;\n&quot;</span>);  
+                }  
+            }  
+        }  
+    }  
+
+}
+</code></pre>
+<p>&#x4F8B;&#x5B50;&#x4E2D;&#x4F7F;&#x7528;&#x5230;&#x7684;RecursionAlgorithmMain&#x7C7B;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RecursionAlgorithmMain</span> </span>{  
+
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">volatile</span> <span class="hljs-keyword">int</span> value = <span class="hljs-number">0</span>;  
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">sigma</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>{  
+        value = n;  
+         System.out.println(<span class="hljs-string">&quot;current &apos;n&apos; value is &quot;</span> + n);  
+        <span class="hljs-keyword">return</span> n + sigma(n + <span class="hljs-number">1</span>);  
+    }  
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> IOException </span>{  
+        <span class="hljs-keyword">new</span> Thread(() -&gt; sigma(<span class="hljs-number">1</span>)).start();  
+        System.in.read();  
+        System.out.println(value);  
+    }  
+
+}
+</code></pre>
+<p>&#x4EE5;RecursionAlgorithmMain&#x7684;sigma&#x65B9;&#x6CD5;&#x4E3A;&#x4F8B;&#xFF0C;&#x9996;&#x5148;&#x4F7F;&#x7528;javap&#x67E5;&#x770B;sigma&#x65B9;&#x6CD5;&#x7684;&#x5B57;&#x8282;&#x7801;&#xFF0C;&#x76EE;&#x7684;&#x662F;&#x5BF9;&#x6BD4;&#x6211;&#x4EEC;&#x7F16;&#x5199;&#x7684;&#x89E3;&#x6790;&#x5DE5;&#x5177;&#x89E3;&#x6790;&#x7684;&#x7ED3;&#x679C;&#xFF0C;&#x9A8C;&#x8BC1;&#x89E3;&#x6790;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x6B63;&#x786E;&#x3002;</p>
+<p> <img src="images/chapter02_12_02.png" alt="image-20210724204348141"></p>
+<p>&#x4F7F;&#x7528;&#x7F16;&#x5199;&#x597D;&#x7684;&#x89E3;&#x6790;&#x5DE5;&#x5177;&#x89E3;&#x6790;sigma&#x65B9;&#x6CD5;&#x7684;Code&#x5C5E;&#x6027;&#xFF0C;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="images/chapter02_12_03.png" alt="image-20210724204417677"></p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5C06;&#x5B57;&#x8282;&#x7801;&#x8F6C;&#x4E3A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x8F93;&#x51FA;&#xFF0C;&#x65B9;&#x4FBF;&#x4E0E;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#x8868;&#x5BF9;&#x7167;&#x3002;</p>
+<p>byte[]&#x8F6C;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x5B57;&#x7B26;&#x4E32;&#x5DE5;&#x5177;&#x7C7B;&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#x3002;</p>
+<pre><code class="lang-java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HexStringUtils</span> </span>{  
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">toHexString</span><span class="hljs-params">(<span class="hljs-keyword">byte</span>[] codes)</span> </span>{  
+        StringBuilder codeStrBuild = <span class="hljs-keyword">new</span> StringBuilder();  
+        <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;  
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">byte</span> code : codes) {  
+                  <span class="hljs-comment">// toHexString&#x5C06;&#x5B57;&#x8282;&#x8F6C;&#x5341;&#x516D;&#x8FDB;&#x5236;&#xFF0C;&#x5B9E;&#x73B0;&#x7565;...</span>
+            codeStrBuild.append(toHexString(code)).append(<span class="hljs-string">&quot; &quot;</span>);  
+            <span class="hljs-keyword">if</span>(++i==<span class="hljs-number">9</span>){  
+                i=<span class="hljs-number">0</span>;  
+                codeStrBuild.append(<span class="hljs-string">&quot;\n&quot;</span>);  
+            }  
+        }  
+        <span class="hljs-keyword">return</span> codeStrBuild.toString();  
+        }  
+
+}
+</code></pre>
+<p>&#x5C06;&#x5B57;&#x8282;&#x7801;&#x8F6C;&#x4E3A;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x5B57;&#x7B26;&#x4E32;&#x540E;&#x8F93;&#x51FA;&#x7684;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#x3002;</p>
+<p><img src="images/chapter02_12_04.png" alt="image-20210724204506306"></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;&#x5B57;&#x8282;&#x7801;&#x90E8;&#x5206;&#x7684;0x1A&#x5BF9;&#x5E94;iload_0&#x6307;&#x4EE4;&#xFF0C;0xB3&#x5BF9;&#x5E94;putstatic&#x6307;&#x4EE4;&#xFF0C;&#x7531;&#x4E8E;putstatic&#x6307;&#x4EE4;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x56E0;&#x6B64;0xB3&#x540E;&#x9762;&#x7684;0x00 02&#x5C31;&#x662F;&#x6307;&#x4EE4;&#x6240;&#x9700;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x3002;</p>
+<hr>
+<p><font color="#666666">&#x53D1;&#x5E03;&#x4E8E;&#xFF1A;2021 &#x5E74; 07 &#x6708; 24 &#x65E5;</font><br><font color="#666666">&#x4F5C;&#x8005;: &#x5434;&#x5C31;&#x4E1A;</font><br><font color="#666666">&#x94FE;&#x63A5;: <a href="https://wujiuye.gitbook.io/jvmbytecode" target="_blank">https://wujiuye.gitbook.io/jvmbytecode</a></font><br><font color="#666666">&#x6765;&#x6E90;: GitBook&#x5F00;&#x6E90;&#x7535;&#x5B50;&#x4E66;&#x300A;&#x6DF1;&#x5165;&#x6D45;&#x51FA;JVM&#x5B57;&#x8282;&#x7801;&#x300B;&#xFF08;&#x300A;Java&#x865A;&#x62DF;&#x673A;&#x5B57;&#x8282;&#x7801;&#x4ECE;&#x5165;&#x95E8;&#x5230;&#x5B9E;&#x6218;&#x300B;&#x7684;&#x7B2C;&#x4E8C;&#x7248;&#xFF09;&#xFF0C;&#x672A;&#x7ECF;&#x4F5C;&#x8005;&#x8BB8;&#x53EF;&#xFF0C;&#x7981;&#x6B62;&#x8F6C;&#x8F7D;!</font><br></p>
+<p><img src="../qrcode/javaskill_qrcode_02.png" alt="Java&#x827A;&#x672F;"></p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="11.html" class="navigation navigation-prev " aria-label="Previous page: 解析整个Class文件结构">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="13.html" class="navigation navigation-next " aria-label="Next page: 本章小结">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"属性二次解析","level":"1.4.13","depth":2,"next":{"title":"本章小结","level":"1.4.14","depth":2,"path":"chapter02/13.md","ref":"chapter02/13.md","articles":[]},"previous":{"title":"解析整个Class文件结构","level":"1.4.12","depth":2,"path":"chapter02/11.md","ref":"chapter02/11.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"chapter02/12.md","mtime":"2021-07-24T14:44:55.065Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-24T14:52:34.376Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
